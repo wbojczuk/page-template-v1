@@ -7,8 +7,7 @@ const nextConfig = {
               hostname: 'i.imgur.com',
             },
           ],
-    },
-    exclude: ["optional"]
+    }
 }
 
 module.exports = nextConfig
