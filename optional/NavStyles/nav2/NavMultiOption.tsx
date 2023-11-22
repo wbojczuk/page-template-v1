@@ -16,13 +16,43 @@ interface optionProps {
         return (<Link key={i} href={data.url}><li>{data.title}</li></Link>)
     })
 
+    const listRef: any = useRef()
+    const [isActive, setIsActive] = useState(false)
+
+    useEffect(()=>{
+      const isOnTouch = window.matchMedia("(max-width: 990px)").matches
+      if(!isOnTouch){
+        //@ts-ignore
+        servicesRef!.current.classList.add(styles.dropdownActive)
+      }else{
+        window.addEventListener("click", (evt)=>{
+          //@ts-ignore
+          if(evt.target != listRef.current){
+            setIsActive(false)
+          }
+        })
+      }
+    })
+
+    function toggleActive(){
+      
+      if(!isActive){
+        //@ts-ignore
+        servicesRef!.current.classList.add(styles.dropdownActive)
+      }else{
+        //@ts-ignore
+        servicesRef!.current.classList.remove(styles.dropdownActive)
+      }
+      setIsActive((old)=>!old)
+    }
+
   return (
     //@ts-ignore
     <div ref={servicesRef} className={`${styles.dropdownLink} ${styles.navLink}`}>
-              <li>
-                <InlineIcon icon={props.iconifyIcon} width="50px" height="50px" />
-                <span>{props.title}</span>
-                <InlineIcon icon={"mdi:menu-down"} width="50px" height="50px" />
+              <li ref={listRef} className={`nav-noclose ${styles.dropdownList}`} onClick={toggleActive}>
+                <InlineIcon style={{pointerEvents: "none"}} icon={props.iconifyIcon} width="50px" height="50px" />
+                <span style={{pointerEvents: "none"}}>{props.title}</span>
+                <InlineIcon style={{pointerEvents: "none"}} icon={"mdi:menu-down"} width="50px" height="50px" />
               </li>
 
               <ul>

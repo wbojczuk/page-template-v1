@@ -59,13 +59,14 @@ export default function Navbar() {
     })
   }, [pathname])
 
+
   useEffect(()=>{
     const isOnTouch = window.matchMedia("(max-width: 990px)").matches
 
     if(isOnTouch){
       window.addEventListener("click", (evt)=>{
         //@ts-ignore
-        if(!(evt.target.id != undefined && evt.target.id == "hamburgerMenu")){
+        if(!(evt.target.classList.contains("nav-noclose"))){
           closeMenu()
         }
       })
@@ -102,7 +103,7 @@ export default function Navbar() {
         <span>Rome Digital</span>
       </Link>
 
-      <button id="hamburgerMenu" onClick={toggleMenu} ref={hamburgerRef} className="hamburger hamburger--spin mobile tablet" type="button">
+      <button id="hamburgerMenu" onClick={toggleMenu} ref={hamburgerRef} className="hamburger hamburger--spin mobile tablet nav-noclose" type="button">
         <span className="hamburger-box" style={{pointerEvents: "none"}}>
           <span className="hamburger-inner" style={{pointerEvents: "none"}}></span>
         </span>
@@ -125,7 +126,7 @@ export default function Navbar() {
           title="Services"
           ref={servicesRef}
           links={[
-            {title: "Driveway Cleaning", url: "/"},
+            {title: "Driveway Cleaning", url: "/services"},
             {title: "Roof Cleaning", url: "/"},
             {title: "House Cleaning", url: "/"},
           ]}
