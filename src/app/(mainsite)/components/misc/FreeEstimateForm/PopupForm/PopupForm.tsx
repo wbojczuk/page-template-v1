@@ -1,15 +1,15 @@
 "use client"
 
 import "./popupform.css"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import handleFormSubmit from "../handleFormSubmit"
-import emailIcon from "../icons/email.svg"
-import locationIcon from "../icons/location.svg"
-import personIcon from "../icons/person.svg"
-import phoneIcon from "../icons/phone.svg"
+import Image from "next/image"
+import MessageStatus from "../../MessageStatus/MessageStatus"
 
-export default function PopUpForm({setStatus}: {setStatus: any}) {
+export default function PopUpForm() {
+
+    const [status, setStatus] = useState("none")
 
     const formRef: any = useRef();
     const wrapperRef: any = useRef();
@@ -65,18 +65,7 @@ export default function PopUpForm({setStatus}: {setStatus: any}) {
             
 
             let isIntersecting = false
-
-            const mainFormIntersection = new IntersectionObserver((entries)=>{
-                entries.forEach((entry)=>{
-                    if(entry.isIntersecting){
-                        isIntersecting = true
-                    }else{
-                        isIntersecting = false
-                    }
-                })
-            }, {threshold: 0.1})
-            mainFormIntersection.observe(document.getElementById("estimateForm")!)
-
+            //@ts-ignore
             function checkIfShow(){
                 if(!isIntersecting){
                     openForm();
@@ -93,42 +82,47 @@ export default function PopUpForm({setStatus}: {setStatus: any}) {
     }, [])
 
   return (
+    <>
+    <MessageStatus status={status} setStatus={setStatus} />
     <div id="popupFormWrapper" ref={wrapperRef} >
         <form ref={formRef} id="popupForm" onSubmit={(evt)=>{handleFormSubmit(evt, setStatus, formRef); closeForm()}}>
-    
-        <input type="hidden" name="_next" value={`${window.location.origin}?messagesuccess=true${location.hash}`}/>
         <input type="hidden" name="_captcha" value="false"/>
-        <input type="hidden" name="_subject" value="New estimate request"/>
+        <input type="hidden" name="_subject" value="New message from website"/>
             
-            <h2 id="popupFormTitle">Get a <em>Free</em><br />Estimate!</h2>
+        <h2 id="popupFormTitle">Let's Talk!</h2>
             <div className="input-wrapper">
-                <img id="formPersonIcon" src={personIcon} alt="Person Icon" />
+                <Image width={200} height={200} id="formPersonIcon" src={"/icons/person.png"} alt="Person Icon" />
                 <input required type="text" name="name" id="nameInput" placeholder={"Name"} />
             </div>
+            
             <div className="input-wrapper">
-                <img id="formEmailIcon" src={emailIcon} alt="Email Icon" />
-                <input required type="email" name="email" id="emailInput" placeholder={"Email Address"} />
-            </div>
-            <div className="input-wrapper">
-            <img id="formPhoneIcon" src={phoneIcon} alt="Phone Icon" />
+                <Image width={200} height={200} id="formPhoneIcon" src={"/icons/phone.png"} alt="Phone Icon" />
                 <input required type="text" name="phoneNumber" id="phoneNumberInput" placeholder={"Phone Number"} />
             </div>
             <div className="input-wrapper">
-            <img id="formLocationIcon" src={locationIcon} alt="Location Icon" />
-                <input required type="text" name="serviceAddress" id="locationInput" placeholder={"Service Address"} />
-            </div>
-            <div className="input-wrapper">
-                <textarea required maxLength={2000} name="message" id="messageInput" placeholder={"Any Additional Details..."}></textarea>
+                <Image width={200} height={200} id="formEmailIcon" src={"/icons/email.png"} alt="Email Icon" />
+                <input required type="email" name="email" id="emailInput" placeholder={"Email Address"} />
             </div>
 
-            <input id="popupFormSubmit" type="submit" value="Get Your Free Estimate!" />
-            <div className="form-disclaimer">We will never spam you or sell your data, the data submitted will only be used to send estimates and invoices to.</div>
-        
+            <div className="input-wrapper">
+                <textarea required maxLength={2000} name="details" id="messageInput" placeholder={"Details about your project"}></textarea>
+            </div>
+            
+            <div className="center">
+                <a onClick={(evt)=>{evt.preventDefault(); formRef.current.requestSubmit();}} className="main-button" id="estimateFormSubmit" type="submit">Let's Go! <img src="./icons/arrow-right.svg" aria-hidden /></a>
+            </div>
+            
+            <div className="form-decoration top-left"></div>
+            <div className="form-decoration top-right"></div>
+            <div className="form-decoration bottom-left"></div>
+            <div className="form-decoration bottom-right"></div>
+
             <button id="popupFormClose" onClick={(evt)=>{
                 evt.preventDefault();
                 closeForm()
             }}></button>        
         </form>
     </div>
+    </>
   )
 }

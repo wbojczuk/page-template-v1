@@ -1,5 +1,6 @@
 "use client"
 
+import "./hamburgers.min.css"
 import styles from "./navbar.module.css"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"

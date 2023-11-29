@@ -8,7 +8,6 @@ import locationIcon from "./icons/location.svg"
 import personIcon from "./icons/person.svg"
 import phoneIcon from "./icons/phone.svg"
 import MessageStatus from "../MessageStatus/MessageStatus"
-import PopUpForm from "./PopupForm/PopupForm"
 
 export default function FreeEstimateForm() {
 
@@ -18,10 +17,9 @@ export default function FreeEstimateForm() {
 
   return (
     <>
-    <PopUpForm setStatus={setStatus} />
     <MessageStatus status={status} setStatus={setStatus}/>
     <form ref={formRef} id="estimateForm" onSubmit={(evt)=>{handleFormSubmit(evt, setStatus, formRef)}}>
-    <input type="hidden" name="_subject" value="New estimate request"/>
+    <input type="hidden" name="_subject" value="New message from website"/>
 
 
         <input type="hidden" name="_captcha" value="false"/>

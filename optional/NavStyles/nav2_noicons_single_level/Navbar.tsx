@@ -6,8 +6,6 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import { InlineIcon } from "@iconify/react"
-import Image from "next/image"
-import NavMultiOption from "./NavMultiOption"
 import NavOption from "./NavOption"
 
 
@@ -18,10 +16,10 @@ export default function Navbar() {
 
   // ****************** Add NAV OPTION REFS HERE ******************
 
-  const servicesRef: any = useRef()
   const homeRef: any = useRef()
-  const aboutRef: any = useRef()
+  const programRef: any = useRef()
   const contactRef: any = useRef()
+  const staffRef: any = useRef()
 
   const hamburgerRef: any = useRef()
   const contentRef: any = useRef()
@@ -30,16 +28,16 @@ export default function Navbar() {
 
   const currentPageTriggers = [
     {
-      triggers: ["/about"],
-      ref: aboutRef
-    },
-    {
-      triggers: ["/services"],
-      ref: servicesRef
+      triggers: ["/staff"],
+      ref: staffRef
     },
     {
       triggers: ["/contact"],
       ref: contactRef
+    },
+    {
+      triggers: ["/program"],
+      ref: programRef
     },
     {
       triggers: ["/", "/home"],
@@ -100,8 +98,8 @@ export default function Navbar() {
     <nav className={styles.mainNav}>
 
       <Link href="/" className={styles.logo}>
-        <Image src="/img/logo.png" className={styles.logoImg} width={500} height={250} alt="Logo" />
-        <span>Rome Digital</span>
+        <div className={styles.logoImg}> </div>
+        <span>Cartersville Outreach Men’s Center</span>
       </Link>
 
       <button id="hamburgerMenu" onClick={toggleMenu} ref={hamburgerRef} className="hamburger hamburger--spin mobile tablet nav-noclose" type="button">
@@ -119,38 +117,29 @@ export default function Navbar() {
           <NavOption
           title="Home"
           url="/"
-          iconifyIcon="mdi:home"
           ref={homeRef}
-          />
-    
-          <NavMultiOption
-          title="Services"
-          ref={servicesRef}
-          links={[
-            {title: "Driveway Cleaning", url: "/services"},
-            {title: "Roof Cleaning", url: "/"},
-            {title: "House Cleaning", url: "/"},
-          ]}
-          iconifyIcon="mdi:tools"
           />
 
           <NavOption
-          title="About Us"
-          url="/about"
-          iconifyIcon="mdi:information"
-          ref={aboutRef}
+          title="Program"
+          url="/program"
+          ref={programRef}
           />
 
           <NavOption
           title="Contact"
           url="/contact"
-          iconifyIcon="mdi:email"
           ref={contactRef}
           />
+          <NavOption
+          title="Staff"
+          url="/staff"
+          ref={staffRef}
+          />
 
-          <a href="tel:0000000000" className={styles.cta}>
-            <InlineIcon icon={"mdi:phone"} width="50px" height="50px" />
-            <span>CALL US (000) 000-0000</span>
+          <a target="_blank" href="https://paypal.com" className={styles.cta}>
+            <InlineIcon icon={"mdi:heart"} width="50px" height="50px" />
+            <span>Donate</span>
           </a>
 
           </ul>
