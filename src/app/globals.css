@@ -12,7 +12,7 @@
 
 :root{
   --primary-color: #606ad6;
-  --secondary-color: #56A7DE;
+  --secondary-color: #F6F6F6;
   --third-color: #F6F6F6;
 
   /*
@@ -29,6 +29,7 @@
 body{
   font-family: var(--primary-font);
   color: var(--primary-text-color);
+  padding-top: 80vh;
 }
 
 .center{
@@ -47,6 +48,22 @@ body{
 }
 .react-multi-carousel-item:active{
   cursor: grabbing;
+}
+
+body::-webkit-scrollbar {
+  width: 0.85em;
+  background-color: var(--secondary-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--primary-color);
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.375em rgb(0 0 0 / 30%);
+  -webkit-box-shadow: inset 0 0 0.375em rgb(0 0 0 / 30%);
+  background-color: #fff;
 }
 
 :root{

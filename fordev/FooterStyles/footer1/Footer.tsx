@@ -16,7 +16,6 @@ export default function Footer() {
           <aside>
               <h3 className={styles.listTitle}>Quick Links</h3>
               <ul className={styles.list}>
-                
                 <li className={styles.listItem}>
                   <Link href="/">Home</Link>
                 </li>
@@ -26,25 +25,21 @@ export default function Footer() {
                 <li className={styles.listItem}>
                   <Link href="/contact">Contact</Link>
                 </li>
-
               </ul>
             </aside>
 
             <aside>
               <h3 className={styles.listTitle}>Categories</h3>
               <ul className={styles.list}>
-
                 <span className={styles.listItem}>Category</span>
                 <span className={styles.listItem}>Category</span>
                 <span className={styles.listItem}>Category</span>
-              
               </ul>
             </aside>
 
             <aside>
               <h3 className={styles.listTitle}>Contact</h3>
               <ul className={styles.list}>
-
                 <aside className={`${styles.contactItem} ${styles.listItem}`}>
                 <InlineIcon icon={"mdi:phone"} width="50px" height="50px" />
                   <a href="tel:0000000000" target="_blank">(000) 000-0000</a>
@@ -59,7 +54,6 @@ export default function Footer() {
                 <InlineIcon icon={"mdi:map-marker"} width="50px" height="50px" />
                   <a href="https://google.com" target="_blank">Rome, Georgia</a>
                 </aside>
-
               </ul>
             </aside>
           </div>
