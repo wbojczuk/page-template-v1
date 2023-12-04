@@ -89,6 +89,8 @@ export default function PopUpForm() {
         <input type="hidden" name="_captcha" value="false"/>
         <input type="hidden" name="_subject" value="New message from website"/>
             
+            {/* START FIELDS */}
+
         <h2 id="popupFormTitle">Let's Talk!</h2>
             <div className="input-wrapper">
                 <Image width={200} height={200} id="formPersonIcon" src={"/icons/person.png"} alt="Person Icon" />
@@ -111,16 +113,14 @@ export default function PopUpForm() {
             <div className="center">
                 <a onClick={(evt)=>{evt.preventDefault(); formRef.current.requestSubmit();}} className="main-button" id="estimateFormSubmit" type="submit">Let's Go! <img src="./icons/arrow-right.svg" aria-hidden /></a>
             </div>
-            
-            <div className="form-decoration top-left"></div>
-            <div className="form-decoration top-right"></div>
-            <div className="form-decoration bottom-left"></div>
-            <div className="form-decoration bottom-right"></div>
+
 
             <button id="popupFormClose" onClick={(evt)=>{
                 evt.preventDefault();
                 closeForm()
-            }}></button>        
+            }}></button>    
+
+                {/* END FIELDS */}
         </form>
     </div>
     </>

@@ -6,6 +6,10 @@ import Footer from './(mainsite)/components/misc/Footer/Footer';
 import Navbar from './(mainsite)/components/misc/Navbar/Navbar';
 import Script from 'next/script';
 
+// BUTTON STYLES - .main-button
+import "./(mainsite)/components/styling_sheets/links/link1.css"
+
+
 const primaryFont = Roboto({ subsets: ['latin'], weight: ["100", "300", "400", "500", "900"], display: "swap", variable: "--primary-font" })
 const secondaryFont = Oswald({ subsets: ['latin'], weight: ["300", "500", "700"], display: "swap", variable: "--secondary-font" })
 

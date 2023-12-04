@@ -1,0 +1,79 @@
+/* TEMPLATE
+
+<a className="main-button">Learn More <InlineIcon icon="basil:arrow-right-outline"/> </a>
+
+*/
+
+.main-button{
+    background-color: var(--primary-color);
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2vw 2vw;
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: -2px 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .main-button::after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background-color: #5d89ca;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: 0.3s transform;
+  }
+  
+  .main-button:hover::after{
+    transform: scaleX(1);
+  }
+  
+  .main-button svg{
+    display: inline-block;
+    width: 2vw;
+    height: 2vw;
+    object-fit: cover;
+    transition: 0.4s transform;
+  }
+
+  .main-button:hover svg{
+    transform: translateX(6px);
+  }
+
+  /* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+  
+    .main-button svg{
+      width: 3.5vw;
+      height: 3.5vw;
+    }
+    
+    .main-button{
+      padding: 0.6vw 3vw;
+      font-size: 1.4rem;
+    }
+  }
+  
+  /* MOBILE STYLES */
+  @media only screen and (max-width: 649px){
+    .main-button svg{
+      width: 6.5vw;
+      height: 6.5vw;
+    }
+    
+    .main-button{
+      padding: 0.8vw 5vw;
+      font-size: 1.4rem;
+    }
+  }
+  
