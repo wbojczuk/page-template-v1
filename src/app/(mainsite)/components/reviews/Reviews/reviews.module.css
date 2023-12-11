@@ -32,6 +32,8 @@
 }
 
 .review p{
+    height: 10vw;
+    overflow-y: auto;
     margin: 0.5vw 0;
     font-size: 1.1rem;
     line-height: 150%;
@@ -44,11 +46,26 @@
     font-style: italic;
 }
 
+.review p::-webkit-scrollbar {
+    width: 5px;
+}
+.review p::-webkit-scrollbar-track {
+    background: transparent;
+
+}
+.review p::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 999px;
+}
+
 /* SMALL LAPTOP STYLES */
 @media only screen and (min-width: 991px) and (max-width: 1400px){
     .reviewsWrapper{
         width: 85%;
         margin: 0 10%;
+    }
+    .review p{
+        height: 18vw;
     }
     .review svg{
         width: 4vw;
@@ -78,6 +95,7 @@
     
     .review p{
         margin: 1vw 0;
+        height: 22vw;
     }
     
     .review span{
@@ -107,6 +125,7 @@
     
     .review p{
         margin: 1.5vw 0;
+        height: 45vw;
     }
     
     .review span{
