@@ -10,3 +10,10 @@ interface linkProps{
     style: any,
     isLocal: boolean
 }
+
+interface reviewType{
+    title: string,
+    desc: string,
+    name: string,
+    role: string
+}

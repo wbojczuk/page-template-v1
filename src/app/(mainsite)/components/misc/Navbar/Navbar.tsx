@@ -22,6 +22,7 @@ export default function Navbar() {
   const homeRef: any = useRef()
   const aboutRef: any = useRef()
   const contactRef: any = useRef()
+  const reviewsRef: any = useRef()
 
   const hamburgerRef: any = useRef()
   const contentRef: any = useRef()
@@ -40,6 +41,10 @@ export default function Navbar() {
     {
       triggers: ["/contact"],
       ref: contactRef
+    },
+    {
+      triggers: ["/reviews"],
+      ref: reviewsRef
     },
     {
       triggers: ["/", "/home"],
@@ -173,6 +178,13 @@ export default function Navbar() {
           url="/about"
           iconifyIcon="mdi:information"
           ref={aboutRef}
+          />
+
+          <NavOption
+          title="Reviews"
+          url="/reviews"
+          iconifyIcon="mdi:account"
+          ref={reviewsRef}
           />
 
           <NavOption

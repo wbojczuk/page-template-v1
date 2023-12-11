@@ -26,6 +26,8 @@
   --secondary-text-color: white;
 
   --section-padding: 4vw 0;
+  --section-padding-top: 4vw;
+  --section-padding-bottom: 4vw;
 }
 
 body{
@@ -97,6 +99,8 @@ body::-webkit-scrollbar-track {
 @media only screen and (min-width: 991px) and (max-width: 1400px){
   :root{
     --section-padding: 5vw 0;
+    --section-padding-top: 5vw;
+    --section-padding-bottom: 5vw;
   }
 }
 
@@ -106,8 +110,10 @@ body::-webkit-scrollbar-track {
     padding-top: 8vw;
   }
   :root{
-      font-size: 12px;
-      --section-padding: 8vw 0;
+    font-size: 12px;
+    --section-padding: 8vw 0;
+    --section-padding-top: 8vw;
+    --section-padding-bottom: 8vw;
   }
   .tablet{
     display: initial !important;
@@ -120,8 +126,10 @@ body::-webkit-scrollbar-track {
     padding-top: 15vw;
   }
   :root{
-      font-size: 10px;
-      --section-padding: 12vw 0;
+    font-size: 10px;
+    --section-padding: 12vw 0;
+    --section-padding-top: 12vw;
+    --section-padding-bottom: 12vw;
   }
   .mobile{
     display: initial !important;
