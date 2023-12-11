@@ -16,15 +16,16 @@
     left:0;
     height: 2px;
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-text-color);
     transform-origin: left;
     transform: scaleX(0);
-    transition: 0.3s transform;
+    transition: 0.3s transform, 0.3s background-color;
 }
 .footer a:hover{
     color: var(--primary-color);
 }
 .footer a:hover::after{
+    background-color: var(--primary-color);
     transform: scaleX(1);
 }
 .content{

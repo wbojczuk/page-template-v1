@@ -1,0 +1,110 @@
+/* TEMPLATE
+
+<a className="main-button">Let's Go!  <InlineIcon icon="gg:arrow-right"/></a>
+
+*/
+
+.main-button{
+    cursor: pointer;
+    position: relative;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    color: var(--secondary-text-color);
+    padding: 0.8vw 1.8vw;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-family: var(--secondary-font);
+    border-radius: 10px;
+    z-index: 10;
+    transition: 0.4s transform;
+  }
+  .main-button::before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: -0;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    z-index: -1;
+  }
+  .main-button:active::before{
+    filter: brightness(85%);
+  }
+  .main-button::after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    left: -4px;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #45454581;
+    z-index: -2;
+    transition: 0.4s transform;
+  }
+  
+  .main-button:hover{
+    transform: translateY(-2px) translateX(2px);
+  }
+  
+  .main-button:hover::after{
+    transform: translateY(4px) translateX(-4px);
+  }
+  
+  .main-button svg{
+    margin-left: 0.6vw;
+    display: inline-block;
+    width: 1.6vw;
+    height: 1.6vw;
+    aspect-ratio: 1/1;
+    transition: 0.4s transform;
+  }
+  
+  .main-button:hover svg{
+    transform: translateX(6px);
+  }
+
+  /* MEDIUM LAPTOP STYLES */
+@media only screen and (min-width: 1401px) and (max-width: 1900px){
+    .main-button{
+      padding:1vw 2.2vw;
+    }
+  }
+  
+  
+  /* SMALL LAPTOP STYLES */
+  @media only screen and (min-width: 991px) and (max-width: 1400px){
+    .main-button{
+      padding: 1.2vw 2.4vw;
+    }
+  }
+  
+  /* TABLET STYLES */
+  @media only screen and (min-width: 650px) and (max-width: 990px){
+    .main-button{
+      padding: 1.8vw 3vw;
+    }
+    .main-button svg{
+      margin-left: 1.5vw;
+      width: 3vw;
+      height: 3vw;
+    }
+  }
+  
+  /* MOBILE STYLES */
+  @media only screen and (max-width: 649px){
+    .main-button{
+      padding: 3vw 6vw;
+      font-size: 1.5rem;
+    }
+    .main-button svg{
+      margin-left: 2vw;
+      width: 5vw;
+      height: 5vw;
+    }
+  }

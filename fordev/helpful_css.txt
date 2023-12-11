@@ -1,4 +1,5 @@
 FONT Sizes
+
 :root{
     font-size: 14px;
 }
@@ -16,6 +17,7 @@ FONT Sizes
 
 
 General Breakpoints
+
 /* LARGE DESKTOP STYLES */
 @media only screen and (min-width: 1921px){
  
@@ -34,6 +36,11 @@ General Breakpoints
 
 /* SMALL LAPTOP STYLES */
 @media only screen and (min-width: 991px) and (max-width: 1400px){
+ 
+}
+
+/* TABLET AND LOWER STYLES */
+@media only screen and (max-width: 990px){
  
 }
 

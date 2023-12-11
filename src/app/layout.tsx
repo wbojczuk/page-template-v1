@@ -7,7 +7,7 @@ import Navbar from './(mainsite)/components/misc/Navbar/Navbar';
 import Script from 'next/script';
 
 // BUTTON STYLES - .main-button
-import "./(mainsite)/components/styling_sheets/links/link1.css"
+import "./(mainsite)/components/styling_sheets/links/mainlink.css"
 
 
 const primaryFont = Roboto({ subsets: ['latin'], weight: ["100", "300", "400", "500", "900"], display: "swap", variable: "--primary-font" })
