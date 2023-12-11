@@ -1,6 +1,6 @@
 "use client"
 import { InlineIcon } from "@iconify/react"
-import styles from "./featuredservice.module.css"
+import styles from "./section1.module.css"
 import Image from "next/image"
 
 export default function FeaturedService(props: {imgSrc: string}) {
