@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "updatemain": "echo 'Enter Commit Message:' && read msg && git checkout main && git add -A && git commit -m \"$msg\" && git push origin main"
+    "update": "echo 'Enter Commit Message:' && read msg && git checkout with_blog && git add -A && git commit -m \"$msg\" && git push origin with_blog"
   },
   "dependencies": {
     "@iconify/react": "^4.1.1",
