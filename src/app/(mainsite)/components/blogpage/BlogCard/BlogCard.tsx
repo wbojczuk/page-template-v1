@@ -1,4 +1,5 @@
-// "use client"
+"use client"
+import { InlineIcon } from '@iconify/react'
 import Link from 'next/link'
 import React from 'react'
 import styles from "./blogcard.module.css"
@@ -16,7 +17,7 @@ export default function BlogCard(props: cardProps) {
       <img src={props.coverImage} alt="Cover Image" className={styles.coverImg} />
       <h2>{props.title}</h2>
       <p>{props.description}</p>
-      <Link href={`/blog/${props.slug}`} className={`main-button ${styles.ctaButton}`}>Read More <img src="./icons/arrow-right.svg" aria-hidden /></Link>
+      <Link href={`/blog/${props.slug}`} className={`main-button`}>Read More <InlineIcon icon="gg:arrow-right"/></Link>
     </div>
   )
 }
