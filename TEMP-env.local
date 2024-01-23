@@ -1,2 +1,20 @@
+#Form Submission email / id
+
 NEXT_PUBLIC_FORMSUBMIT_EMAIL=example@gmail.com
+
+
+#Google Analytics Measurement ID
+
 NEXT_PUBLIC_GA_MEASUREMENT_ID=0000000
+
+
+#Start Oustatic Config
+
+OST_GITHUB_ID=client_id
+OST_GITHUB_SECRET=client_secret
+OST_TOKEN_SECRET=random_string_min_32_chars
+OST_REPO_SLUG=repo_name
+OST_REPO_OWNER=repo_owner_username
+OST_REPO_BRANCH=main
+
+#End Oustatic Config

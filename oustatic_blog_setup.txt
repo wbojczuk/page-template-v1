@@ -1,0 +1,7 @@
+1. Create Github OAuth Application at user->settings->developer settings->OAuth Apps.
+
+2. Set callback url to https://website.com/api/outstatic/callback
+
+3. Fill in app details in env.local 
+
+4. Add client's github account as a collaborator to the repo.

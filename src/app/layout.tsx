@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import "react-multi-carousel/lib/styles.css";
+import "./vendor/prism.css"
 import { Oswald, Roboto } from 'next/font/google'
 import Footer from './(mainsite)/components/misc/Footer/Footer';
 import Navbar from './(mainsite)/components/misc/Navbar/Navbar';

@@ -23,6 +23,7 @@ export default function Navbar() {
   const aboutRef: any = useRef()
   const contactRef: any = useRef()
   const reviewsRef: any = useRef()
+  const blogRef: any = useRef()
 
   const hamburgerRef: any = useRef()
   const contentRef: any = useRef()
@@ -49,6 +50,10 @@ export default function Navbar() {
     {
       triggers: ["/", "/home"],
       ref: homeRef
+    },
+    {
+      triggers: ["/blog"],
+      ref: blogRef
     }
     
   ]
@@ -192,6 +197,13 @@ export default function Navbar() {
           url="/contact"
           iconifyIcon="mdi:email"
           ref={contactRef}
+          />
+
+          <NavOption
+          title="Blog"
+          url="/blog"
+          iconifyIcon="mdi:book"
+          ref={blogRef}
           />
 
           <a href="tel:0000000000" className={styles.cta}>

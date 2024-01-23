@@ -1,0 +1,47 @@
+.card{
+    display: inline-block;
+    margin: 2vw 5%;
+    width: 40%;
+}
+.coverImg{
+    width: 100%;
+    aspect-ratio: 1/0.6;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card h2{
+    font-family: var(--secondary-font);
+    font-size: 2.4rem;
+}
+
+.card p{
+    font-size: 1.2rem;
+    margin: 0.2vw 0 1vw 0;
+    line-height: 150%;
+}
+
+/* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+    .card p{
+        font-size: 1rem;
+        margin: 0.4vw 0 1.4vw 0;
+        line-height: 150%;
+    }
+}
+ 
+/* MOBILE STYLES */
+@media only screen and (max-width: 649px){
+    .card{
+        margin: 6vw 10%;
+        width: 80%;
+    }
+    .card h2{
+        font-size: 2.4rem;
+    }
+    
+    .card p{
+        font-size: 1.4rem;
+        margin: 0.6vw 0 1.8vw 0;
+    }
+}

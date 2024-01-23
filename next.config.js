@@ -6,6 +6,14 @@ const nextConfig = {
               protocol: 'https',
               hostname: 'i.imgur.com',
             },
+            {
+              protocol: 'https',
+              hostname: 'cdn.sanity.io',
+            },
+            {
+              protocol: 'https',
+              hostname: 'via.placeholder.com',
+            },
           ],
     }
 }
