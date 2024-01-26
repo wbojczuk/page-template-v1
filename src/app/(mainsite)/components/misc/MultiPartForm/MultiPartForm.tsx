@@ -2,11 +2,21 @@
 
 import styles from "./multipartform.module.css"
 import handleFormSubmit from "../FreeEstimateForm/handleFormSubmit"
+import DisplaySteps from "./styling/DisplaySteps/DisplaySteps"
 import MessageStatus from "../MessageStatus/MessageStatus"
-import { useRef, useState, ReactNode, useEffect } from "react"
+import { useRef, useState, ReactNode, useEffect, CSSProperties } from "react"
+
+interface sectionProps{
+        elements: ReactNode,
+        title?: string,
+        subtitle?: string
+}
 
 interface multiPartFormProps {
-    sections: ReactNode[]
+    sections: sectionProps[],
+    displaySteps?: boolean,
+    displayStepsSize?: number
+    
 }
 
 export default function MultiPartForm(props: multiPartFormProps) {
@@ -14,7 +24,8 @@ export default function MultiPartForm(props: multiPartFormProps) {
     // ----- States
 
     const [status, setStatus] = useState("none")
-    const [sectionTitle, setSectionTitle] = useState("Temp Title")
+    const [sectionTitle, setSectionTitle] = useState("")
+    const [sectionSubtitle, setSectionSubtitle] = useState("")
     const [currentSection, setCurrentSection] = useState(0)
     const [isLastSection, setIsLastSection] = useState(false)
 
@@ -24,10 +35,17 @@ export default function MultiPartForm(props: multiPartFormProps) {
 
     const sectionsAmt = props.sections.length
 
+    const displaySteps = (props.displaySteps != null) ? props.displaySteps : true
+
+    let displayStepsSize: any = 0
+
+    let displayStepsConnectorWidth: number = 0
+
+
     const sectionElems = props.sections.map((data, i)=>{
         return(
             <div className={`${styles.section} ${(i == 0) ? styles.primary : styles.hidden}`} key={i} id={`multiPartFormSection${i}`}>
-                {data}
+                {data.elements}
             </div>
         )
     })
@@ -37,10 +55,10 @@ export default function MultiPartForm(props: multiPartFormProps) {
     // ----- Refs
 
     const formRef: any = useRef()
-    
     const formDataObjectRef: any = useRef()
-
     const sectionRefs: any = useRef()
+    const forwardButtonRef: any = useRef()
+    const backButtonRef: any = useRef()
 
 
 
@@ -57,7 +75,6 @@ export default function MultiPartForm(props: multiPartFormProps) {
             }else{
                 const oldSection = currentSection
                 const newSection = oldSection + 1
-                console.log(sectionRefs.current[oldSection])
                 sectionRefs.current[oldSection].classList.remove(styles.primary)
                 sectionRefs.current[oldSection].classList.add(styles.hidden)
                 sectionRefs.current[newSection].classList.remove(styles.hidden)
@@ -73,7 +90,20 @@ export default function MultiPartForm(props: multiPartFormProps) {
     }
 
     function backButtonHandler(){
+        saveFormData()
 
+       if(currentSection > 0){
+            const oldSection = currentSection
+            const newSection = oldSection - 1
+            sectionRefs.current[oldSection].classList.remove(styles.primary)
+            sectionRefs.current[oldSection].classList.add(styles.hidden)
+            sectionRefs.current[newSection].classList.remove(styles.hidden)
+            sectionRefs.current[newSection].classList.add(styles.primary)
+
+            setCurrentSection((oldVal)=>{
+                return --oldVal
+            })
+        }
     }
 
 
@@ -86,7 +116,8 @@ export default function MultiPartForm(props: multiPartFormProps) {
     function checkCurrentSectionValidity(){
         let invalidAmt = 0
 
-        const elemsToCheck = document.getElementById(`multiPartFormSection${currentSection}`)?.querySelectorAll("input:not(input[type='submit']):not(input[type='hidden']), section:not(section[type='hidden']), textarea:not(textarea[type='hidden'])")
+        // @ts-ignore
+        const elemsToCheck = Array.from(document.getElementById(`multiPartFormSection${currentSection}`)?.querySelectorAll("input:not(input[type='submit']):not(input[type='hidden']), section:not(section[type='hidden']), textarea:not(textarea[type='hidden'])")).reverse()
         elemsToCheck?.forEach((elem, i)=>{
             //@ts-ignore
             elem.setCustomValidity("")
@@ -108,10 +139,43 @@ export default function MultiPartForm(props: multiPartFormProps) {
     }
 
 
+
     // ----- Hooks
 
 
-    // Init
+    // OnSectionChange
+    useEffect(()=>{
+        if((currentSection + 1) === sectionsAmt){
+            setIsLastSection(true)
+        }else{
+            setIsLastSection(false)
+        }
+
+        //@ts-ignore
+        setSectionTitle((props.sections[currentSection].title != null) ? props.sections[currentSection].title : "")
+
+        //@ts-ignore
+        setSectionSubtitle((props.sections[currentSection].subtitle != null) ? props.sections[currentSection].subtitle : "")
+
+        if(currentSection === 0){
+            backButtonRef.current.classList.add(styles.disabled)
+        }else{
+            backButtonRef.current.classList.remove(styles.disabled)
+        }
+
+    }, [currentSection])
+
+
+
+    //----- Init -----
+
+
+    if(displaySteps){
+        displayStepsSize = (props.displayStepsSize != null) ? props.displaySteps : 15
+        displayStepsConnectorWidth = (100 - (displayStepsSize as number * sectionsAmt)) / (sectionsAmt - 1)
+    }
+    
+
     useEffect(()=>{
         saveFormData()
 
@@ -122,14 +186,6 @@ export default function MultiPartForm(props: multiPartFormProps) {
         sectionRefs.current = tempSectionRefs
 
     }, [])
-
-
-    // OnSectionChange
-    useEffect(()=>{
-        if((currentSection + 1) === sectionsAmt){
-            setIsLastSection(true)
-        }
-    }, [currentSection])
 
 
 
@@ -143,7 +199,16 @@ export default function MultiPartForm(props: multiPartFormProps) {
 
             {/* ----- Top Header */}
             <div className={styles.header}>
+                {(displaySteps)&&
+                    <DisplaySteps
+                    displayStepsConnectorWidth={displayStepsConnectorWidth}
+                    displayStepsSize={displayStepsSize}
+                    currentSection={currentSection}
+                    sectionsAmt={sectionsAmt}
+                    />
+                }
                 <h2>{sectionTitle}</h2>
+                <h4>{sectionSubtitle}</h4>
             </div>
 
             {/*  ----- Content  */}
@@ -152,9 +217,9 @@ export default function MultiPartForm(props: multiPartFormProps) {
             </div>
 
             {/*  ----- Bottom Nav  */}
-            <div className={styles.navButtons}>
-                <a onClick={(evt)=>{evt.preventDefault(); backButtonHandler()}} className={styles.backButton}>Back</a>
-                <a onClick={(evt)=>{evt.preventDefault(); forwardButtonHandler()}} className={styles.forwardButton}>{(isLastSection) ? "Submit" : "Continue"}</a>
+            <div className={styles.navButtonsWrapper}>
+                <a ref={backButtonRef} onClick={(evt)=>{evt.preventDefault(); backButtonHandler()}} className={`${styles.backButton} ${styles.navButton}`}>Back</a>
+                <a ref={forwardButtonRef} onClick={(evt)=>{evt.preventDefault(); forwardButtonHandler()}} className={`${styles.forwardButton} ${styles.navButton}`}>{(isLastSection) ? "Submit" : "Continue"}</a>
             </div>
         </form>
     </>

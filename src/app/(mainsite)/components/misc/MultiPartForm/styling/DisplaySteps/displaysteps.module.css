@@ -1,0 +1,36 @@
+.stepsWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw 10% 1.5vw 10%;
+}
+
+.circle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-text-color);
+    outline: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    width: var(--circle-size);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.circle.filled{
+    background-color: var(--primary-color);
+    outline: 1px solid var(--primary-color);
+    color: var(--secondary-text-color);
+}
+
+.connector{
+    display: inline-block;
+    width: var(--connector-width);
+    height: 3px;
+    background-color: var(--primary-color);
+    opacity: 0.5;
+}
+
+.connector.filled{
+    opacity: 1;
+}
