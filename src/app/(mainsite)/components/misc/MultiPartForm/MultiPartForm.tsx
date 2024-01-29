@@ -15,7 +15,8 @@ interface sectionProps{
 interface multiPartFormProps {
     sections: sectionProps[],
     displaySteps?: boolean,
-    displayStepsSize?: number
+    displayStepsSize?: number,
+    onSubmit?: any
     
 }
 
@@ -31,11 +32,23 @@ export default function MultiPartForm(props: multiPartFormProps) {
 
 
 
+    // ----- Refs
+
+    const formRef: any = useRef()
+    const formDataObjectRef: any = useRef()
+    const sectionRefs: any = useRef()
+    const forwardButtonRef: any = useRef()
+    const backButtonRef: any = useRef()
+
+
+
     // ----- Static-ish Variables
 
     const sectionsAmt = props.sections.length
 
     const displaySteps = (props.displaySteps != null) ? props.displaySteps : true
+
+    const onSubmit = (evt: any)=>handleFormSubmit(evt, setStatus, formRef)
 
     let displayStepsSize: any = 0
 
@@ -49,16 +62,6 @@ export default function MultiPartForm(props: multiPartFormProps) {
             </div>
         )
     })
-
-
-
-    // ----- Refs
-
-    const formRef: any = useRef()
-    const formDataObjectRef: any = useRef()
-    const sectionRefs: any = useRef()
-    const forwardButtonRef: any = useRef()
-    const backButtonRef: any = useRef()
 
 
 
@@ -193,7 +196,7 @@ export default function MultiPartForm(props: multiPartFormProps) {
     <>
         <MessageStatus status={status} setStatus={setStatus}/>
 
-        <form className={styles.form} ref={formRef} id="multiPartForm" onSubmit={(evt)=>{/* handleFormSubmit(evt, setStatus, formRef) */}}>
+        <form className={styles.form} ref={formRef} id="multiPartForm" onSubmit={onSubmit}>
             <input type="hidden" name="_subject" value="New message from website"/>
             <input type="hidden" name="_captcha" value="false"/>
 
