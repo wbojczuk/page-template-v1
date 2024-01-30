@@ -33,12 +33,12 @@
 .contentWrapper input:not(input[type='submit']):not(input[type='hidden']), .contentWrapper select, .contentWrapper textarea{
     display: inline-block;
     position: relative;
-    width: 95%;
-    padding: 0.6vw 2.5%;
+    width: 90%;
+    padding: 0.8vw 5% !important;
     margin: var(--vertical-padding) 0;
-    border: 1px solid var(--disabled-grey);
-    outline: 1px solid transparent;
-    border-radius: 2px;
+    border: 1px solid var(--disabled-grey) !important;
+    outline: 1px solid transparent !important;
+    border-radius: 10px;
     color: var(--primary-text-color);
 }
 
@@ -46,7 +46,7 @@
     color: var(--disabled-grey);
 }
 
-.contentWrapper input:not(input[type='submit']):not(input[type='hidden']):focus, .contentWrapper textarea:focus{
+.contentWrapper input:not(input[type='submit']):not(input[type='hidden']):focus, .contentWrapper textarea:focus, .contentWrapper select:focus{
     border: 1px solid var(--primary-color) !important;
     outline: 1px solid var(--primary-color) !important;
 }
@@ -72,20 +72,33 @@
 
 /* Select Input Styles */
 
+.contentWrapper select{
+    position: relative;
+    width: 100% !important;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}
 .contentWrapper div[data-class="select"]{
-    display: inline-flex;
-    width: 100%;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.5vw;
+    position: relative;
+}
+.contentWrapper div[data-class="select"]::after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: 2%;
+    top:25%;
+    height: 50%;
+    aspect-ratio: 1/1;
+    background-image: url("/icons/caret-down.svg");
+    pointer-events: none;
+    background-size: 100%;
+    background-position: center;
+    transition: 0.3s transform;
 }
 
-.contentWrapper div[data-class="select"] label{
-    width: auto !important;
-}
-
-.contentWrapper div[data-class="select"] select{
-    width: auto !important;
+.contentWrapper div[data-class="select"]:has(select[data-isopen="true"])::after{
+    transform: rotate(180deg);
 }
 
 /* Textarea Input Styles */
@@ -153,7 +166,7 @@
     margin: var(--vertical-padding) 0;
     border: 1px solid var(--disabled-grey);
     outline: 1px solid transparent;
-    border-radius: 2px;
+    /* border-radius: 2px; */
 }
 
 .contentWrapper div[data-class="half-input"]{

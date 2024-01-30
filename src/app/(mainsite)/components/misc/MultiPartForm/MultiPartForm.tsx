@@ -187,6 +187,20 @@ export default function MultiPartForm(props: multiPartFormProps) {
             tempSectionRefs.push(document.getElementById(`multiPartFormSection${i}`))
         }
         sectionRefs.current = tempSectionRefs
+        console.log(formRef.current.querySelectorAll("div[data-class='select']"))
+
+
+        formRef.current.querySelectorAll("div[data-class='select']>select").forEach((elem: HTMLSelectElement)=>{
+            window.addEventListener("click", (evt)=>{
+                if((evt.target != elem)){console.log(evt.target);elem.setAttribute("data-isopen", "false")}
+                
+            })
+            elem.setAttribute("data-isopen", "false");
+            elem.onclick = (evt: any)=>{
+                //@ts-ignore
+                if((evt.currentTarget.getAttribute("data-isopen") === "false")){evt.currentTarget.setAttribute("data-isopen", "true")}else{evt.currentTarget.setAttribute("data-isopen", "false")}
+            }
+        })
 
     }, [])
 

@@ -16,8 +16,17 @@ export default function TestForm() {
               <input name="input1_2" type="text" placeholder="Jobs" />
             </div>
 
-            <input name="input2" type="text" placeholder="test input" />
-            <input name="input3" required type="text" placeholder="test input" />
+            <input type="text" />
+          
+            <div data-class="select">
+              <select name="select" id="select">
+                <option selected value="1">Option #1</option>
+                <option value="2">Option #2</option>
+                <option value="3">Option #3</option>
+                <option value="4">Option #4</option>
+                <option value="5">Option #5</option>
+              </select>
+            </div>
           </>
         },
         {
