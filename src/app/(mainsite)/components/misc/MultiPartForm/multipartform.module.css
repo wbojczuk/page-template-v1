@@ -30,7 +30,7 @@
 
 /* Full Input Styles */
 
-.contentWrapper input:not(input[type='submit']):not(input[type='hidden']){
+.contentWrapper input:not(input[type='submit']):not(input[type='hidden']), .contentWrapper select, .contentWrapper textarea{
     display: inline-block;
     position: relative;
     width: 95%;
@@ -39,16 +39,99 @@
     border: 1px solid var(--disabled-grey);
     outline: 1px solid transparent;
     border-radius: 2px;
+    color: var(--primary-text-color);
 }
 
-.contentWrapper input:not(input[type='submit']):not(input[type='hidden'])::placeholder{
-    color: var(--disabled-grey)
+.contentWrapper input:not(input[type='submit']):not(input[type='hidden'])::placeholder, .contentWrapper textarea::placeholder{
+    color: var(--disabled-grey);
 }
 
-.contentWrapper input:not(input[type='submit']):not(input[type='hidden']):focus{
-    border: 1px solid var(--primary-color);
-    outline: 1px solid var(--primary-color);
+.contentWrapper input:not(input[type='submit']):not(input[type='hidden']):focus, .contentWrapper textarea:focus{
+    border: 1px solid var(--primary-color) !important;
+    outline: 1px solid var(--primary-color) !important;
 }
+
+/* Checkbox Input Styles */
+
+.contentWrapper div[data-class="checkbox"]{
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5vw;
+}
+
+.contentWrapper div[data-class="checkbox"] input[type='checkbox']{
+    width: auto !important;
+}
+
+.contentWrapper div[data-class="checkbox"] label{
+    width: auto !important;
+}
+
+
+/* Select Input Styles */
+
+.contentWrapper div[data-class="select"]{
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5vw;
+}
+
+.contentWrapper div[data-class="select"] label{
+    width: auto !important;
+}
+
+.contentWrapper div[data-class="select"] select{
+    width: auto !important;
+}
+
+/* Textarea Input Styles */
+
+.contentWrapper textarea{
+    resize: none;
+    height: 5vw;
+}
+
+/* Radio Input Styles */
+
+.contentWrapper div[data-class="radio"]{
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5vw;
+}
+
+.contentWrapper div[data-class="radio"] label{
+    width: auto !important;
+}
+
+.contentWrapper div[data-class="radio"] input{
+    width: auto !important;
+}
+
+/* Date Input Styles */
+
+.contentWrapper div[data-class="date"]{
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5vw;
+}
+
+.contentWrapper div[data-class="date"] input{
+    width: auto !important;
+}
+
+
+.contentWrapper div[data-class="date"] label{
+    width: auto !important;
+}
+
 
 /* Label styles */
 
@@ -58,13 +141,13 @@
     width: 100%;
 }
 
-.contentWrapper label + input:not(input[type='submit']):not(input[type='hidden']), .contentWrapper div div label + input:not(input[type='submit']):not(input[type='hidden']){
+.contentWrapper label + input[type='text'], .contentWrapper label + textarea, .contentWrapper div[data-class='half-input'] label + input:not(input[type='submit']):not(input[type='hidden']){
     margin:calc( var(--vertical-padding) / 2) 0 var(--vertical-padding) 0;
 }
 
 /* Half Input / Label Styles */
 
-.contentWrapper div div input:not(input[type='submit']):not(input[type='hidden']){
+.contentWrapper div[data-class="half-input"] input:not(input[type='submit']):not(input[type='hidden']){
     display: inline-block;
     padding: 0.6vw 2.5%;
     margin: var(--vertical-padding) 0;
@@ -73,12 +156,12 @@
     border-radius: 2px;
 }
 
-.contentWrapper div div:has(input:not(input[type='submit']):not(input[type='hidden'])){
+.contentWrapper div[data-class="half-input"]{
     display: inline-block;
     width: 48%;
     padding-right: 2%;
 }
-.contentWrapper div div:has(input:not(input[type='submit']):not(input[type='hidden']))+div{
+.contentWrapper div div[data-class="half-input"]+div{
     padding-right: 0;
     padding-left: 2%;
 }

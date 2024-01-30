@@ -7,15 +7,15 @@ export default function TestForm() {
           subtitle: "Let's get to know one another!",
           elements:
           <>
-            <div>
+            <div data-class="half-input">
               <label htmlFor="input1">First Name</label>
               <input required name="input1" type="text" placeholder="Steve" />
             </div>
-            <div>
+            <div data-class="half-input">
               <label htmlFor="input1">Last Name</label>
               <input name="input1_2" type="text" placeholder="Jobs" />
             </div>
-            
+
             <input name="input2" type="text" placeholder="test input" />
             <input name="input3" required type="text" placeholder="test input" />
           </>
@@ -23,8 +23,21 @@ export default function TestForm() {
         {
           title: "Test Title2",
           elements: <>
-          <input name="input4" type="text" placeholder="test input" />
-          <input name="input5" type="text" placeholder="test input" />
+          <div data-class='checkbox'>
+            <input name="input4" type="checkbox" placeholder="test input" />
+            <label htmlFor="input4">Website Design</label>
+          </div>
+          <div data-class='checkbox'>
+            <input name="input5" type="checkbox" placeholder="test input" />
+            <label htmlFor="input5">Website Development</label>
+          </div>
+
+          <textarea name="text" id="text" placeholder="Put Smt Here"></textarea>
+
+          <div data-class="date">
+            <label htmlFor="date">Select Time</label>
+            <input type="datetime-local" name="date" id="date" />
+          </div>
          </>,
         },
         {

@@ -4,7 +4,7 @@ import styles from "./multipartform.module.css"
 import handleFormSubmit from "../FreeEstimateForm/handleFormSubmit"
 import DisplaySteps from "./styling/DisplaySteps/DisplaySteps"
 import MessageStatus from "../MessageStatus/MessageStatus"
-import { useRef, useState, ReactNode, useEffect, CSSProperties } from "react"
+import { useRef, useState, ReactNode, useEffect } from "react"
 
 interface sectionProps{
         elements: ReactNode,
@@ -48,7 +48,7 @@ export default function MultiPartForm(props: multiPartFormProps) {
 
     const displaySteps = (props.displaySteps != null) ? props.displaySteps : true
 
-    const onSubmit = (evt: any)=>handleFormSubmit(evt, setStatus, formRef)
+    const onSubmit = ()=>{} //(evt: any)=>handleFormSubmit(evt, setStatus, formRef)
 
     let displayStepsSize: any = 0
 
