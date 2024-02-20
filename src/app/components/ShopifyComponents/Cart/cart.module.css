@@ -14,6 +14,10 @@
     object-position: center;
 }
 
+.cartIcon{
+  top: calc(-2.5vw / 3);
+}
+
 .cartIcon.filled::after{
     content: "";
     display: inline-block;
@@ -158,6 +162,9 @@
 
 /* TABLET STYLES */
 @media only screen and (min-width: 650px) and (max-width: 990px){
+  .cartIcon{
+    top: 0;
+  }
   .cartIcon, .closeCart{
     width: 5vw;
 }
@@ -215,14 +222,18 @@
   width: 10vw;
 }
 
+.cartIcon{
+  top: 0;
+}
+
 .cartIcon.filled::after{
     width: 1.8vw;
 }
 
 
 .sideBar{
-    width: 92%;
-    padding: 4% 4% 0 4%;
+    width: 92vw;
+    padding: 4vw 4% 0 4vw;
 }
 
 .cartTitle{
