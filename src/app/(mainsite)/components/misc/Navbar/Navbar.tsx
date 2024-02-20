@@ -26,6 +26,7 @@ export default function Navbar() {
 
   const hamburgerRef: any = useRef()
   const contentRef: any = useRef()
+  const content2Ref: any = useRef()
 
   // ****************** Add Current Page Triggers HERE ******************
 
@@ -143,15 +144,16 @@ export default function Navbar() {
         hamburger--vortex
         hamburger--vortex-r */}
 
+     
+        
+      <div className={styles.contentWrapper}>
       <button id="hamburgerMenu" onClick={toggleMenu} ref={hamburgerRef} className="hamburger hamburger--collapse mobile tablet nav-noclose" type="button">
         <span className="hamburger-box" style={{pointerEvents: "none"}}>
           <span className="hamburger-inner" style={{pointerEvents: "none"}}></span>
         </span>
       </button>
-        
-
-        <div ref={contentRef} className={styles.content}>
-          <ul className={styles.links}>
+        <div ref={content2Ref} className={styles.content}>
+          <ul ref={contentRef} className={styles.links}>
 
 {/******************  PUT NAV OPTIONS HERE  ************************/}
 
@@ -194,12 +196,16 @@ export default function Navbar() {
           ref={contactRef}
           />
 
-          <a href="tel:0000000000" className={styles.cta}>
-            <InlineIcon icon={"mdi:phone"} width="50px" height="50px" />
-            <span>CALL US (000) 000-0000</span>
-          </a>
+          
+
+          
 
           </ul>
+
+          {/* ******* PUT SHOPIFY CART HERE ******** */}
+
+        </div>
+        
         </div>
     </nav>
   )
