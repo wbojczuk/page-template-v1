@@ -3,6 +3,7 @@
     display: inline-flex;
     flex-wrap: wrap;
     width: 80%;
+    min-height: 80vh;
     padding: 1vw 10%;
 }
 
