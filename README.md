@@ -4,6 +4,7 @@
 1. Paste this repo's contents into a page-template-v1 project.
 2. Copy file contents marked with (copy-to) to the corresponding file in the page-template-v1 project.
 3. Install the npm packages listed inside "npm pkgs to install.txt"
-4. On shopify.com in your store go to settings>Apps and sales channels>Develop Apps>Create an App, and fill in the details
-5. Next in the app window, go to Configuration>Storefront API integration>Configure, and allow all access.
-6. Go to API Credentials and get the API key, put the key in the .env.local file in the project, and fill in the store URL in the .env.local file in the project.
+4. In layout.tsx import and put <AppWrapper elems<>ALL ELEM CONTENT HERE/<> />
+5. On shopify.com in your store go to settings>Apps and sales channels>Develop Apps>Create an App, and fill in the details
+6. Next in the app window, go to Configuration>Storefront API integration>Configure, and allow all access.
+7. Go to API Credentials and get the API key, put the key in the .env.local file in the project, and fill in the store URL in the .env.local file in the project.
