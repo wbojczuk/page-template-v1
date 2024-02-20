@@ -7,7 +7,7 @@
 
 4. Set callback url to https://website.com/api/outstatic/callback
 
-5. Fill in app details in env.local
+5. Generate new Client Secret and Fill in app details in env.local
 
 <h5> The "posts" collection should already be created with a temporary blog. If not, create it.</h5>
 
