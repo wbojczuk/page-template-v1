@@ -8,4 +8,4 @@
 5. In Navbar.tsx import and put <Cart /> where comment specifies.
 6. On shopify.com in your store go to settings>Apps and sales channels>Develop Apps>Create an App, and fill in the details
 7. Next in the app window, go to Configuration>Storefront API integration>Configure, and allow all access.
-8. Go to API Credentials and get the API key, put the key in the .env.local file in the project, and fill in the store URL in the .env.local file in the project.
+8. Click "Install App", then get the API key, put the key in the .env.local file in the project, and fill in the store URL in the .env.local file in the project.
