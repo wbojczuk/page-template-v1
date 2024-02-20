@@ -1,4 +1,4 @@
-<h1>Shopify for page template v1</h1>
+<h1>Blog Support for page template v1</h1>
 <h3>Instructions:</h3>
 
 1. Paste the contents of this repository into a page-template-v1 project and then push to github repo
