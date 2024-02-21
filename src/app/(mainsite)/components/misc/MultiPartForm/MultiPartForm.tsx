@@ -5,6 +5,7 @@ import handleFormSubmit from "../FreeEstimateForm/handleFormSubmit"
 import DisplaySteps from "./styling/DisplaySteps/DisplaySteps"
 import MessageStatus from "../MessageStatus/MessageStatus"
 import { useRef, useState, ReactNode, useEffect } from "react"
+import {Swiper, SwiperSlide} from "swiper/react"
 
 interface sectionProps{
         elements: ReactNode,
@@ -29,6 +30,7 @@ export default function MultiPartForm(props: multiPartFormProps) {
     const [sectionSubtitle, setSectionSubtitle] = useState("")
     const [currentSection, setCurrentSection] = useState(0)
     const [isLastSection, setIsLastSection] = useState(false)
+    const [isAnimating, setIsAnimating] = useState(false)
 
 
 
@@ -39,10 +41,12 @@ export default function MultiPartForm(props: multiPartFormProps) {
     const sectionRefs: any = useRef()
     const forwardButtonRef: any = useRef()
     const backButtonRef: any = useRef()
+    const swiperRef: any = useRef()
 
 
 
     // ----- Static-ish Variables
+
 
     const sectionsAmt = props.sections.length
 
@@ -56,10 +60,11 @@ export default function MultiPartForm(props: multiPartFormProps) {
 
 
     const sectionElems = props.sections.map((data, i)=>{
+        //  ${(i == 0) ? styles.primary : styles.hidden}  
         return(
-            <div className={`${styles.section} ${(i == 0) ? styles.primary : styles.hidden}`} key={i} id={`multiPartFormSection${i}`}>
+            <SwiperSlide className={`${styles.section} swiper-no-swiping`} key={i} id={`multiPartFormSection${i}`}>
                 {data.elements}
-            </div>
+            </SwiperSlide>
         )
     })
 
@@ -68,7 +73,7 @@ export default function MultiPartForm(props: multiPartFormProps) {
     // ----- Event Handlers
 
     function forwardButtonHandler(){
-
+        console.log("HEY")
         if(checkCurrentSectionValidity()){
 
             saveFormData()
@@ -78,10 +83,11 @@ export default function MultiPartForm(props: multiPartFormProps) {
             }else{
                 const oldSection = currentSection
                 const newSection = oldSection + 1
-                sectionRefs.current[oldSection].classList.remove(styles.primary)
-                sectionRefs.current[oldSection].classList.add(styles.hidden)
-                sectionRefs.current[newSection].classList.remove(styles.hidden)
-                sectionRefs.current[newSection].classList.add(styles.primary)
+                // sectionRefs.current[oldSection].classList.remove(styles.primary)
+                // sectionRefs.current[oldSection].classList.add(styles.hidden)
+                // sectionRefs.current[newSection].classList.remove(styles.hidden)
+                // sectionRefs.current[newSection].classList.add(styles.primary)
+                swiperRef.current.swiper.slideNext()
 
                 setCurrentSection((oldVal)=>{
                     return ++oldVal
@@ -98,10 +104,12 @@ export default function MultiPartForm(props: multiPartFormProps) {
        if(currentSection > 0){
             const oldSection = currentSection
             const newSection = oldSection - 1
-            sectionRefs.current[oldSection].classList.remove(styles.primary)
-            sectionRefs.current[oldSection].classList.add(styles.hidden)
-            sectionRefs.current[newSection].classList.remove(styles.hidden)
-            sectionRefs.current[newSection].classList.add(styles.primary)
+            // sectionRefs.current[oldSection].classList.remove(styles.primary)
+            // sectionRefs.current[oldSection].classList.add(styles.hidden)
+            // sectionRefs.current[newSection].classList.remove(styles.hidden)
+            // sectionRefs.current[newSection].classList.add(styles.primary)
+
+            swiperRef.current.swiper.slidePrev()
 
             setCurrentSection((oldVal)=>{
                 return --oldVal
@@ -191,7 +199,7 @@ export default function MultiPartForm(props: multiPartFormProps) {
 
         formRef.current.querySelectorAll("div[data-class='select']>select").forEach((elem: HTMLSelectElement)=>{
             window.addEventListener("click", (evt)=>{
-                if((evt.target != elem)){console.log(evt.target);elem.setAttribute("data-isopen", "false")}
+                if((evt.target != elem)){elem.setAttribute("data-isopen", "false")}
                 
             })
             elem.setAttribute("data-isopen", "false");
@@ -229,13 +237,23 @@ export default function MultiPartForm(props: multiPartFormProps) {
 
             {/*  ----- Content  */}
             <div className={styles.contentWrapper}>
+            <Swiper
+            ref={swiperRef}
+            speed={600}
+            slidesPerView={1}
+            spaceBetween={20}
+            onSlideChangeTransitionEnd={()=>{setIsAnimating(false)}}
+            onSlideChangeTransitionStart={()=>{setIsAnimating(true)}}
+            centeredSlides
+            className={styles.swiper}>
                 {sectionElems}
+            </Swiper>
             </div>
 
             {/*  ----- Bottom Nav  */}
             <div className={styles.navButtonsWrapper}>
-                <a ref={backButtonRef} onClick={(evt)=>{evt.preventDefault(); backButtonHandler()}} className={`${styles.backButton} ${styles.navButton}`}>Back</a>
-                <a ref={forwardButtonRef} onClick={(evt)=>{evt.preventDefault(); forwardButtonHandler()}} className={`${styles.forwardButton} ${styles.navButton}`}>{(isLastSection) ? "Submit" : "Continue"}</a>
+                <a ref={backButtonRef} onClick={(isAnimating) ? ()=>{}: (evt)=>{evt.preventDefault(); backButtonHandler()}} className={`${styles.backButton} ${styles.navButton}`}>Back</a>
+                <a ref={forwardButtonRef} onClick={(isAnimating) ? ()=>{}: (evt)=>{evt.preventDefault(); forwardButtonHandler()}} className={`${styles.forwardButton} ${styles.navButton}`}>{(isLastSection) ? "Submit" : "Continue"}</a>
             </div>
         </form>
     </>

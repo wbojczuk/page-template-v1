@@ -44,7 +44,7 @@ export default function TestForm() {
         <label htmlFor="input5">Website Development</label>
       </div>
 
-      <textarea name="text" id="text" placeholder="Put Smt Here"></textarea>
+      <textarea required name="text" id="text" placeholder="Put Smt Here"></textarea>
 
       <div data-class="date">
         <label htmlFor="date">Date</label>
