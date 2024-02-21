@@ -6,7 +6,7 @@ import { InlineIcon } from "@iconify/react"
 interface optionProps {
     ref: any,
     url: string
-    iconifyIcon: string,
+    iconifyIcon?: string,
     title: string
 }
 
@@ -16,7 +16,7 @@ interface optionProps {
     //@ts-ignore
     <Link ref={parentRef} href={props.url} className={styles.navLink}>
               <li>
-                <InlineIcon icon={props.iconifyIcon} width="50px" height="50px" />
+                {(props.iconifyIcon !== undefined) ? <InlineIcon icon={props.iconifyIcon} width="50px" height="50px" /> : <span className={styles.noIcon}></span>}
                 <span>{props.title}</span>
               </li>
             </Link>
