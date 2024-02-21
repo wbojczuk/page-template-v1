@@ -34,3 +34,23 @@
 .connector.filled{
     opacity: 1;
 }
+
+/* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+    .stepsWrapper{
+        padding: 1.5vw 10% 2.25vw 10%;
+    }
+    .circle{
+       font-size: 1.1rem;
+    }
+}
+ 
+/* MOBILE STYLES */
+@media only screen and (max-width: 649px){
+    .stepsWrapper{
+        padding: 2.5vw 10% 5vw 10%;
+    }
+    .circle{
+        font-size: 1.4rem;
+     }
+}

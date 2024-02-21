@@ -14,6 +14,7 @@ import NavOption from "./NavOption"
 export default function Navbar() {
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isOnMobile, setIsOnMobile] = useState(false)
 
 
   // ****************** Add NAV OPTION REFS HERE ******************
@@ -69,6 +70,7 @@ export default function Navbar() {
 
   useEffect(()=>{
     const isOnTouch = window.matchMedia("(max-width: 990px)").matches
+    setIsOnMobile(window.matchMedia("(max-width: 649px)").matches)
 
     if(isOnTouch){
       window.addEventListener("click", (evt)=>{
@@ -197,7 +199,10 @@ export default function Navbar() {
           />
 
           
-
+          <a href="tel:0000000000" className={styles.cta}>
+            <InlineIcon icon={"mdi:phone"} width="50px" height="50px" />
+            <span>{(isOnMobile) ? "Tap To Call Us" : "CALL US (000) 000-0000"}</span>
+          </a>
           
 
           </ul>

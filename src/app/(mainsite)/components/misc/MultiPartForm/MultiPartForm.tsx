@@ -187,7 +187,6 @@ export default function MultiPartForm(props: multiPartFormProps) {
             tempSectionRefs.push(document.getElementById(`multiPartFormSection${i}`))
         }
         sectionRefs.current = tempSectionRefs
-        console.log(formRef.current.querySelectorAll("div[data-class='select']"))
 
 
         formRef.current.querySelectorAll("div[data-class='select']>select").forEach((elem: HTMLSelectElement)=>{

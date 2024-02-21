@@ -126,6 +126,10 @@
     width: auto !important;
 }
 
+.contentWrapper *[data-class="bold"]{
+    font-weight: bold;
+}
+
 /* Date Input Styles */
 
 .contentWrapper div[data-class="date"]{
@@ -154,8 +158,8 @@
     width: 100%;
 }
 
-.contentWrapper label + input[type='text'], .contentWrapper label + textarea, .contentWrapper div[data-class='half-input'] label + input:not(input[type='submit']):not(input[type='hidden']){
-    margin:calc( var(--vertical-padding) / 2) 0 var(--vertical-padding) 0;
+.contentWrapper label + input[type='text'], .contentWrapper label + input[type='email'], .contentWrapper label + input[type='number'], .contentWrapper label + input[type='password'], .contentWrapper label + input[type='tel'], .contentWrapper label[data-class="select-label"] + div[data-class="select"] select, .contentWrapper label + textarea, .contentWrapper div[data-class='half-input'] label + input:not(input[type='submit']):not(input[type='hidden']){
+    margin:calc( var(--vertical-padding) / 2) 0 var(--vertical-padding) 0 !important;
 }
 
 /* Half Input / Label Styles */
@@ -251,3 +255,168 @@
 }
 
 
+
+/* SMALL LAPTOP STYLES */
+@media only screen and (min-width: 991px) and (max-width: 1400px){
+    .form{
+        width: 22vw;
+    }
+}
+
+/* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+    .form{
+        padding: 2vw 1vw;
+        width: 36vw;
+        --vertical-padding: 1.4vw;
+    }
+    
+    .header h2{
+        font-size: 1.9rem;
+        letter-spacing: 0.08rem;
+    }
+    .header h4{
+        letter-spacing: 0.03rem;
+    }
+    
+    .contentWrapper{
+        min-height: 15vw;
+        padding: 1.5vw 1vw;
+    }
+    
+    /* Full Input Styles */
+    
+    .contentWrapper input:not(input[type='submit']):not(input[type='hidden']), .contentWrapper select, .contentWrapper textarea{
+        padding: 1.2vw 5% !important;
+        border-radius: 8px;
+    }
+    
+    /* Checkbox Input Styles */
+    
+    .contentWrapper div[data-class="checkbox"]{
+        gap: 0.8vw;
+    }
+    
+    
+    /* Textarea Input Styles */
+    
+    .contentWrapper textarea{
+        resize: none;
+        height: 5vw;
+    }
+    
+    /* Radio Input Styles */
+    
+    .contentWrapper div[data-class="radio"]{
+        gap: 0.8vw;
+    }
+    
+    
+    /* Date Input Styles */
+    
+    .contentWrapper div[data-class="date"]{
+        gap: 0.8vw;
+    }
+
+    /* Label styles */
+    
+    /* Half Input / Label Styles */
+    
+    .contentWrapper div[data-class="half-input"] input:not(input[type='submit']):not(input[type='hidden']){
+        padding: 0.5vw 2.5%;
+    }
+    
+    /* Nav Buttons */
+    
+    .navButtonsWrapper{
+        font-size: 1.1rem;
+    }
+    
+    .navButton{
+        width: 42%;
+        padding: 0.8vw 0;
+        border-radius: 5px;
+    }
+}
+ 
+/* MOBILE STYLES */
+@media only screen and (max-width: 649px){
+    .contentWrapper label{
+        font-size: 1.2rem;
+    }
+    .form{
+        padding: 5vw 2vw;
+        width: 70vw;
+        --vertical-padding: 2vw;
+    }
+    
+    .header h2{
+        font-size: 2.4rem;
+        letter-spacing: 0.06rem;
+    }
+    .header h4{
+        letter-spacing: 0.03rem;
+        font-size: 1.1rem;
+        padding-bottom: 2vw;
+    }
+    
+    .contentWrapper{
+        min-height: 35vw;
+        padding: 2.5vw 2vw;
+    }
+    
+    /* Full Input Styles */
+    
+    .contentWrapper input:not(input[type='submit']):not(input[type='hidden']), .contentWrapper select, .contentWrapper textarea{
+        padding: 2vw 5% !important;
+        border-radius: 6px;
+        font-size: 1.2rem;
+    }
+    
+    /* Checkbox Input Styles */
+    
+    .contentWrapper div[data-class="checkbox"]{
+        gap: 0vw;
+    }
+    
+    
+    /* Textarea Input Styles */
+    
+    .contentWrapper textarea{
+        resize: none;
+        height: 15vw;
+    }
+    
+    /* Radio Input Styles */
+    
+    .contentWrapper div[data-class="radio"]{
+        gap: 2vw;
+    }
+    
+    
+    /* Date Input Styles */
+    
+    .contentWrapper div[data-class="date"]{
+        gap: 2vw;
+    }
+
+    /* Label styles */
+    
+    /* Half Input / Label Styles */
+    
+    .contentWrapper div[data-class="half-input"] input:not(input[type='submit']):not(input[type='hidden']){
+        padding: 0.5vw 2.5%;
+    }
+    
+    /* Nav Buttons */
+    
+    .navButtonsWrapper{
+        font-size: 1.5rem;
+    }
+    
+    .navButton{
+        width: 42%;
+        padding: 1.4vw 0;
+        border-radius: 5px;
+    }
+}

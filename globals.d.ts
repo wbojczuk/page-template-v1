@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 interface faqType{
     question: string,
     answer: string
@@ -16,4 +18,11 @@ interface reviewType{
     desc: string,
     name: string,
     role: string
+}
+
+
+interface multiPartFormSection{
+    elements: ReactNode,
+    title: string,
+    subtitle?: string
 }

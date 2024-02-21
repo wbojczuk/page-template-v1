@@ -42,10 +42,10 @@ export default function DisplaySteps(props: displayStepsProps) {
             const displayStepsConnectorStyles = {"--connector-width": `${props.displayStepsConnectorWidth}%`} as CSSProperties
     
             displayStepsElems.push(
-                <div className={styles.circle} style={displayStepsCircleStyles}>{i+1}</div>
+                <div key={i} className={styles.circle} style={displayStepsCircleStyles}>{i+1}</div>
             )
             if(i !== props.sectionsAmt - 1){
-                displayStepsElems.push(<div className={styles.connector} style={displayStepsConnectorStyles}></div>)
+                displayStepsElems.push(<div key={i+50} className={styles.connector} style={displayStepsConnectorStyles}></div>)
             }
         }
 
