@@ -162,7 +162,7 @@ export default function Navbar() {
           <NavOption
           title="Home"
           url="/"
-          iconifyIcon="mdi:home"
+          icon={<InlineIcon icon="mdi:home" width="50px" height="50px" />}
           ref={homeRef}
           />
     
@@ -174,27 +174,27 @@ export default function Navbar() {
             {title: "Roof Cleaning", url: "/"},
             {title: "House Cleaning", url: "/"},
           ]}
-          iconifyIcon="mdi:tools"
+          icon={<InlineIcon icon="mdi:tools" width="50px" height="50px" />}
           />
 
           <NavOption
           title="About Us"
           url="/about"
-          iconifyIcon="mdi:information"
+          icon={<InlineIcon icon="mdi:information" width="50px" height="50px" />}
           ref={aboutRef}
           />
 
           <NavOption
           title="Reviews"
           url="/reviews"
-          iconifyIcon="mdi:account"
+          icon={<InlineIcon icon="mdi:account" width="50px" height="50px" />}
           ref={reviewsRef}
           />
 
           <NavOption
           title="Contact"
           url="/contact"
-          iconifyIcon="mdi:email"
+          icon={<InlineIcon icon="mdi:email" width="50px" height="50px" />}
           ref={contactRef}
           />
 

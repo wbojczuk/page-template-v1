@@ -1,12 +1,12 @@
 import styles from "./navbar.module.css"
 import Link from "next/link"
-import { useEffect, useRef, useState, useImperativeHandle, forwardRef } from "react"
+import { useEffect, useRef, useState, useImperativeHandle, forwardRef, ReactNode } from "react"
 import { InlineIcon } from "@iconify/react"
 
 interface optionProps {
     ref: any,
     links: {url: string, title: string}[],
-    iconifyIcon: string,
+    icon?: ReactNode,
     title: string
 }
 
@@ -50,7 +50,7 @@ interface optionProps {
     //@ts-ignore
     <div ref={servicesRef} className={`${styles.dropdownLink} ${styles.navLink}`}>
               <li ref={listRef} className={`nav-noclose ${styles.dropdownList}`} onClick={toggleActive}>
-                <InlineIcon style={{pointerEvents: "none"}} icon={props.iconifyIcon} width="50px" height="50px" />
+              {(props.icon !== undefined) ? props.icon : <span className={styles.noIcon}></span>}
                 <span style={{pointerEvents: "none"}}>{props.title}</span>
                 <InlineIcon style={{pointerEvents: "none"}} icon={"mdi:menu-down"} width="50px" height="50px" />
               </li>

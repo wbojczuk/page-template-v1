@@ -60,9 +60,8 @@ export default function MultiPartForm(props: multiPartFormProps) {
 
 
     const sectionElems = props.sections.map((data, i)=>{
-        //  ${(i == 0) ? styles.primary : styles.hidden}  
         return(
-            <SwiperSlide className={`${styles.section} swiper-no-swiping`} key={i} id={`multiPartFormSection${i}`}>
+            <SwiperSlide style={{width: "100%"}} className={`${styles.section} swiper-no-swiping`} key={i} id={`multiPartFormSection${i}`}>
                 {data.elements}
             </SwiperSlide>
         )
@@ -73,7 +72,6 @@ export default function MultiPartForm(props: multiPartFormProps) {
     // ----- Event Handlers
 
     function forwardButtonHandler(){
-        console.log("HEY")
         if(checkCurrentSectionValidity()){
 
             saveFormData()
@@ -240,7 +238,7 @@ export default function MultiPartForm(props: multiPartFormProps) {
             <Swiper
             ref={swiperRef}
             speed={600}
-            slidesPerView={1}
+            slidesPerView={"auto"}
             spaceBetween={20}
             onSlideChangeTransitionEnd={()=>{setIsAnimating(false)}}
             onSlideChangeTransitionStart={()=>{setIsAnimating(true)}}
