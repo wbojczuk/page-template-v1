@@ -79,8 +79,8 @@ export default function MultiPartForm(props: multiPartFormProps) {
             if(isLastSection){
                 formRef.current.requestSubmit()
             }else{
-                const oldSection = currentSection
-                const newSection = oldSection + 1
+                // const oldSection = currentSection
+                // const newSection = oldSection + 1
                 // sectionRefs.current[oldSection].classList.remove(styles.primary)
                 // sectionRefs.current[oldSection].classList.add(styles.hidden)
                 // sectionRefs.current[newSection].classList.remove(styles.hidden)
@@ -100,8 +100,8 @@ export default function MultiPartForm(props: multiPartFormProps) {
         saveFormData()
 
        if(currentSection > 0){
-            const oldSection = currentSection
-            const newSection = oldSection - 1
+            // const oldSection = currentSection
+            // const newSection = oldSection - 1
             // sectionRefs.current[oldSection].classList.remove(styles.primary)
             // sectionRefs.current[oldSection].classList.add(styles.hidden)
             // sectionRefs.current[newSection].classList.remove(styles.hidden)

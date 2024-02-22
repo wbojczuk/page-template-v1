@@ -102,17 +102,9 @@ export default function Navbar() {
     hamburgerRef.current.classList.add("is-active")
     contentRef.current.style.transform =  "scaleX(1)"
   }
-
-
-  return (
-    <nav className={styles.mainNav}>
-
-      <Link href="/" className={styles.logo}>
-        <Image src="/img/logo.png" className={styles.logoImg} width={500} height={250} alt="Logo" />
-        <span>Rome Digital</span>
-      </Link>
-
-        {/* Here’s the list of hamburger-type classes you can choose from:
+  
+  const hamburgerClass = "hamburger--collapse"
+  /* Here’s the list of hamburger-type classes you can choose from:
 
         hamburger--3dx
         hamburger--3dx-r
@@ -144,12 +136,23 @@ export default function Navbar() {
         hamburger--stand-r
         hamburger--squeeze
         hamburger--vortex
-        hamburger--vortex-r */}
+        hamburger--vortex-r */
+
+
+  return (
+    <nav className={styles.mainNav}>
+
+      <Link href="/" className={styles.logo}>
+        <Image src="/img/logo.png" className={styles.logoImg} width={500} height={250} alt="Logo" />
+        <span>Rome Digital</span>
+      </Link>
+
+        
 
      
         
       <div className={styles.contentWrapper}>
-      <button id="hamburgerMenu" onClick={toggleMenu} ref={hamburgerRef} className="hamburger hamburger--collapse mobile tablet nav-noclose" type="button">
+      <button id="hamburgerMenu" onClick={toggleMenu} ref={hamburgerRef} className={`hamburger ${hamburgerClass} mobile tablet nav-noclose`} type="button">
         <span className="hamburger-box" style={{pointerEvents: "none"}}>
           <span className="hamburger-inner" style={{pointerEvents: "none"}}></span>
         </span>
