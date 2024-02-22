@@ -1,0 +1,185 @@
+.serviceArea{
+    margin-top: 2vw;
+    position: relative;
+    display: flex;
+    align-items: space-between;
+    justify-content: stretch;
+}
+
+.areas{
+    display: inline-block;
+    position: relative;
+    width: 35%;
+    padding: 2vw 2.5%;
+    background-image: url("/img/placeholder-vertical.png");
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.areaShader{
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    z-index: -1;
+    top:0;
+    left:0;
+}
+
+.areas h2{
+    position: relative;
+    color: white;
+    font-size: 4rem;
+    line-height: 110%;
+    margin-bottom: 2vw;
+}
+.areas h2::after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 40%;
+    height: 4px;
+    left: 2%;
+    bottom: -4px;
+    background-color: white;
+}
+
+.area{
+    display: inline-flex;
+    width: 45%;
+    padding: 0.5vw 2.5%;
+    color: white;
+    align-items: center;
+}
+
+.area svg{
+    width: 2vw;
+    aspect-ratio: 1/1;
+}
+
+.area span{
+    padding-left: 0.5vw;
+}
+
+.areas{
+    position: relative;
+}
+
+.serviceAreaMap{
+    display: inline-block;
+    position: relative;
+    width: 59%;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.serviceAreaMap iframe{
+    position: absolute;
+    top:-10%;
+    left:0;
+    width: 100%;
+    height: 110%;
+    /* margin-top: -5%; */
+    border: none;
+}
+
+/* SMALL LAPTOP STYLES */
+@media only screen and (min-width: 991px) and (max-width: 1400px){
+    .areas h2{
+        margin-bottom: 3vw;
+    }
+}
+
+/* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+    .serviceArea{
+        margin-top: 3vw;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+    
+    .areas{
+        width: 90%;
+        padding: 4vw 5%;
+    }
+    
+    .areas h2{
+        font-size: 4rem;
+        line-height: 110%;
+        margin-bottom: 5vw;
+    }
+    
+    .area{
+        width: 25%;
+        font-size: 1.1rem;
+        padding: 1vw 4%;
+    }
+    
+    .area svg{
+        width: 3vw;
+    }
+    
+    .area span{
+        padding-left: 1vw;
+    }
+    
+    .serviceAreaMap{
+        width: 100%;
+        height: 60vw;
+    }
+    
+}
+
+/* MOBILE STYLES */
+@media only screen and (max-width: 649px){
+    .serviceArea{
+        margin-top: 3vw;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+    
+    .areas{
+        width: 90%;
+        padding: 6vw 5%;
+    }
+    
+    .areas h2{
+        font-size: 3rem;
+        text-align: center;
+        line-height: 110%;
+        margin-bottom: 5vw;
+    }
+    .areas h2::after{
+       height: 2px;
+       margin: 0 20%;
+       width: 60%;
+    }
+    
+    .area{
+        width: 45%;
+        font-size: 1rem;
+        padding: 2vw 2.5%;
+    }
+    
+    .area svg{
+        width: 5vw;
+    }
+    
+    .area span{
+        padding-left: 1vw;
+    }
+    
+    .serviceAreaMap{
+        width: 100%;
+        height: 130vw;
+    }
+    .serviceAreaMap iframe{
+        top:-20%;
+        height: 120%;
+    }
+}
+    

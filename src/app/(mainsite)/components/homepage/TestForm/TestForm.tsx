@@ -1,4 +1,5 @@
 import MultiPartForm from "../../misc/MultiPartForm/MultiPartForm"
+import ServiceArea from "../../misc/ServiceArea/ServiceArea"
 import { multiPartFormSection } from "../../../../../../globals"
 
 export default function TestForm() {
@@ -66,9 +67,16 @@ export default function TestForm() {
     }
 ]
 
+const areaData: string[] = [
+  "Acworth, GA", "Adairsville, GA", "Atlanta, GA", "Calhoun, GA", "Cartersville, GA", "Cedartown, GA", "Dallas, GA", "Dalton, GA", "Douglasville, GA", "Euharlee, GA", "Fairmount, GA", "Hiram, GA", "Kennesaw, GA", "Marietta, GA", "Resaca, GA", "Rockmart, GA", "Rome, GA", "Roswell, GA", "Sandy Springs, GA", "Summerville, GA", "Taylorsville, GA", "White, GA", "Woodstock, GA"
+]
+
   return (
+    <>
     <div className="center" style={{width: "100vw", height: "100vh"}}>
       <MultiPartForm sections={sections} />
     </div>
+    <ServiceArea areaData={areaData} mapURL="https://www.google.com/maps/d/u/0/embed?mid=1bCgL0sSznR3U5MsP3am2gxbN_te7m74&ehbc=2E312F&noprof=1" />
+    </>
   )
 }
