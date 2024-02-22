@@ -16,10 +16,12 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
   const isSelectOpen: any = useRef()
   const qtyElem: any = useRef()
   const sizeElems: any = useRef() 
+  sizeElems.current = []
+  const colorElems: any = useRef() 
+  colorElems.current = []
   const contentRef: any = useRef()
   const backLinkRef: any = useRef()
   const imagesRef: any = useRef()
-  const colorElems: any = useRef() 
   const [optionTypes, setOptionTypes]: [optionTypes: string[], setOptionTypes: any] = useState([]!)
 
   const { getProductByHandle } = useContext(ShopContext);
@@ -57,7 +59,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
   const colorOptionElems = colorOptions.map((option, i)=>{
     return(
       <div className={`${styles.colorOption} ${styles.optionElem}`} key={i}>
-        <input onChange={(evt)=>{setCurrentColor(evt.currentTarget.value)}} value={option.value} className={`${styles.optionInput} ${styles.colorOptionInput}`} type="radio" name="color_option" id={`color_option${i}`} />
+        <input ref={el => colorElems.current[i] = el} onChange={(evt)=>{setCurrentColor(evt.currentTarget.value)}} value={option.value} className={`${styles.optionInput} ${styles.colorOptionInput}`} type="radio" name="color_option" id={`color_option${i}`} />
         <label className={styles.optionLabel} htmlFor={`color_option${i}`}>{option.value}</label>
       </div>
     )
@@ -66,7 +68,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
   const sizeOptionElems = sizeOptions.map((option, i)=>{
     return(
       <div className={`${styles.sizeOption} ${styles.optionElem}`} key={i}>
-        <input onChange={(evt)=>{setCurrentSize(evt.currentTarget.value)}} className={`${styles.optionInput} ${styles.sizeOptionInput}`} value={option.value} type="radio" name="size_option" id={`size_option${i}`} />
+        <input ref={el => sizeElems.current[i] = el} onChange={(evt)=>{setCurrentSize(evt.currentTarget.value)}} className={`${styles.optionInput} ${styles.sizeOptionInput}`} value={option.value} type="radio" name="size_option" id={`size_option${i}`} />
         <label className={styles.optionLabel} htmlFor={`size_option${i}`}>{option.value}</label>
       </div>
     )
@@ -156,9 +158,6 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
         }
 
         isSelectOpen.current = false
-        sizeElems.current = document.querySelectorAll(`.${styles.sizeOptionInput}`)
-
-        colorElems.current = document.querySelectorAll(`.${styles.colorOptionInput}`)
       }
         
       
@@ -196,7 +195,6 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
       if(optionTypes.includes("color") && optionTypes.includes("size")){
       
       setCurrentSize("unselected")
-      
       if(sizeOptions.length > 1){
         
 
@@ -238,7 +236,6 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
             elem.parentElement.classList.add(styles.notAvailable)
           }
         })
-
         sizeElems.current.forEach((elem: HTMLInputElement)=>{
           //@ts-ignore
           elem.checked = false
@@ -281,7 +278,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
           }
         })
       }
-    }, [currentColor, product])
+    }, [currentColor, product, colorElems.current])
 
 
     // Size / Last Selector Hook
@@ -289,7 +286,6 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
        // RUN AS BOTH color and size is there
        if(optionTypes.includes("color") && optionTypes.includes("size")){
       if(currentSize != "" && currentSize != "unselected"){
-
         variants.forEach((variant, i)=>{
           variant.selectedOptions.forEach((option)=>{
             if((option.name).toLowerCase() == "color" && option.value == currentColor){
@@ -331,7 +327,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
       }
     })
   }
-    }, [currentSize, product])
+    }, [currentSize, product, sizeElems.current])
 
 
 
