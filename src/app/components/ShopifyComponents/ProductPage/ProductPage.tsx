@@ -116,7 +116,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
 
     // Init
     useEffect(()=>{
-
+    window.scrollTo(0,0)
       getProduct()
       async function getProduct(){
         const productData: productType = await getProductByHandle(productHandle)
