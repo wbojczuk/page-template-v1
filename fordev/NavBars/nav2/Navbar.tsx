@@ -14,6 +14,7 @@ import NavOption from "./NavOption"
 export default function Navbar() {
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isOnMobile, setIsOnMobile] = useState(false)
 
 
   // ****************** Add NAV OPTION REFS HERE ******************
@@ -22,9 +23,11 @@ export default function Navbar() {
   const homeRef: any = useRef()
   const aboutRef: any = useRef()
   const contactRef: any = useRef()
+  const reviewsRef: any = useRef()
 
   const hamburgerRef: any = useRef()
   const contentRef: any = useRef()
+  const content2Ref: any = useRef()
 
   // ****************** Add Current Page Triggers HERE ******************
 
@@ -40,6 +43,10 @@ export default function Navbar() {
     {
       triggers: ["/contact"],
       ref: contactRef
+    },
+    {
+      triggers: ["/reviews"],
+      ref: reviewsRef
     },
     {
       triggers: ["/", "/home"],
@@ -63,6 +70,7 @@ export default function Navbar() {
 
   useEffect(()=>{
     const isOnTouch = window.matchMedia("(max-width: 990px)").matches
+    setIsOnMobile(window.matchMedia("(max-width: 649px)").matches)
 
     if(isOnTouch){
       window.addEventListener("click", (evt)=>{
@@ -94,17 +102,9 @@ export default function Navbar() {
     hamburgerRef.current.classList.add("is-active")
     contentRef.current.style.transform =  "scaleX(1)"
   }
-
-
-  return (
-    <nav className={styles.mainNav}>
-
-      <Link href="/" className={styles.logo}>
-        <Image src="/img/logo.png" className={styles.logoImg} width={500} height={250} alt="Logo" />
-        <span>Rome Digital</span>
-      </Link>
-
-        {/* Here’s the list of hamburger-type classes you can choose from:
+  
+  const hamburgerClass = "hamburger--collapse"
+  /* Here’s the list of hamburger-type classes you can choose from:
 
         hamburger--3dx
         hamburger--3dx-r
@@ -136,24 +136,36 @@ export default function Navbar() {
         hamburger--stand-r
         hamburger--squeeze
         hamburger--vortex
-        hamburger--vortex-r */}
+        hamburger--vortex-r */
 
-      <button id="hamburgerMenu" onClick={toggleMenu} ref={hamburgerRef} className="hamburger hamburger--spin mobile tablet nav-noclose" type="button">
+
+  return (
+    <nav className={styles.mainNav}>
+
+      <Link href="/" className={styles.logo}>
+        <Image src="/img/logo.png" className={styles.logoImg} width={500} height={250} alt="Logo" />
+        <span>Rome Digital</span>
+      </Link>
+
+        
+
+     
+        
+      <div className={styles.contentWrapper}>
+      <button id="hamburgerMenu" onClick={toggleMenu} ref={hamburgerRef} className={`hamburger ${hamburgerClass} mobile tablet nav-noclose`} type="button">
         <span className="hamburger-box" style={{pointerEvents: "none"}}>
           <span className="hamburger-inner" style={{pointerEvents: "none"}}></span>
         </span>
       </button>
-        
-
-        <div ref={contentRef} className={styles.content}>
-          <ul className={styles.links}>
+        <div ref={content2Ref} className={styles.content}>
+          <ul ref={contentRef} className={styles.links}>
 
 {/******************  PUT NAV OPTIONS HERE  ************************/}
 
           <NavOption
           title="Home"
           url="/"
-          iconifyIcon="mdi:home"
+          icon={<InlineIcon icon="mdi:home" width="50px" height="50px" />}
           ref={homeRef}
           />
     
@@ -165,29 +177,43 @@ export default function Navbar() {
             {title: "Roof Cleaning", url: "/"},
             {title: "House Cleaning", url: "/"},
           ]}
-          iconifyIcon="mdi:tools"
+          icon={<InlineIcon icon="mdi:tools" width="50px" height="50px" />}
           />
 
           <NavOption
           title="About Us"
           url="/about"
-          iconifyIcon="mdi:information"
+          icon={<InlineIcon icon="mdi:information" width="50px" height="50px" />}
           ref={aboutRef}
+          />
+
+          <NavOption
+          title="Reviews"
+          url="/reviews"
+          icon={<InlineIcon icon="mdi:account" width="50px" height="50px" />}
+          ref={reviewsRef}
           />
 
           <NavOption
           title="Contact"
           url="/contact"
-          iconifyIcon="mdi:email"
+          icon={<InlineIcon icon="mdi:email" width="50px" height="50px" />}
           ref={contactRef}
           />
 
+          
           <a href="tel:0000000000" className={styles.cta}>
             <InlineIcon icon={"mdi:phone"} width="50px" height="50px" />
-            <span>CALL US (000) 000-0000</span>
+            <span>{(isOnMobile) ? "Tap To Call Us" : "CALL US (000) 000-0000"}</span>
           </a>
+          
 
           </ul>
+
+          {/* ******* PUT SHOPIFY CART HERE ******** */}
+
+        </div>
+        
         </div>
     </nav>
   )

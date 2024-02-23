@@ -42,7 +42,9 @@
     text-decoration: none;
     margin: 0 0.7vw;
 }
-
+.noIcon{
+    height: 1.1vw;
+}
 .links svg{
     width: 1.1vw;
     height: 1.1vw;
@@ -63,6 +65,8 @@
 }
 .content{
     padding-top: 0.8vw;
+    display: flex;
+    align-items: flex-start;
 }
 .navLink{
     transition: color 0.3s;
@@ -167,6 +171,9 @@
     .navLink{
         padding-bottom: 1.5vw;
     }
+    .noIcon{
+        height: 1.3vw;
+    }
     .links svg{
         width: 1.3vw;
         height: 1.3vw;
@@ -186,6 +193,9 @@
 
 /* TABLET + MOBILE STYLES */
 @media only screen and (max-width: 990px){
+    .content{
+        padding: 0 !important;
+    }
     .mainNav{
         position: fixed;
         width: 90%;
@@ -205,6 +215,10 @@
     .links a{
         margin: 0;
     }
+
+    .noIcon{
+        height: 2vw;
+    }
     
     .links svg{
         width: 2vw;
@@ -220,7 +234,7 @@
         display: flex;
         justify-content: flex-start;
     }
-    .content{
+    .links{
         position: absolute;
         width: 40%;
         right: 0;
@@ -232,6 +246,9 @@
         transform-origin: right;
         transform: scaleX(0);
         transition: 0.4s transform ease-in-out;
+    }
+    .contentWrapper{
+        display: flex;
     }
     .navLink{
         display: block;
@@ -309,6 +326,9 @@
         display: inline-flex;
         margin: 1.5vw 0;
     }
+    .links a.cta .noIcon{
+        height: 3vw;;
+    }
     .links a.cta svg{
         width: 3vw;
         height: 3vw;;
@@ -326,7 +346,9 @@
         width: 10vw;
         height: 10vw;
     }
-    
+    .noIcon{
+        height: 5vw;
+    }
     .links svg{
         width: 5vw;
         height: 5vw;
@@ -380,6 +402,9 @@
         color: white;
         display: inline-flex;
         margin: 2.5vw 0 0 0;
+    }
+    .links a.cta .noIcon{
+        height: 6vw;
     }
     .links a.cta svg{
         width: 6vw;

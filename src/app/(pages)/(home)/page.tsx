@@ -1,11 +1,10 @@
-import Header from "@/app/(mainsite)/components/homepage/Header/Header"
-import TestForm from "@/app/(mainsite)/components/homepage/TestForm/TestForm"
+import Testing from "@/app/(mainsite)/components/homepage/Testing/Testing"
+
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <TestForm />
+      <Testing />
     </>
   )
 }

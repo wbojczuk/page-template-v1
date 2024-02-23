@@ -1,6 +1,6 @@
 /* TEMPLATE
 
-<a className="main-button">Let's Go!  <InlineIcon icon="gg:arrow-right"/></a>
+<a className="main-button">Let's Go!  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.038 6.343l-1.411 1.418l3.27 3.255l-13.605.013l.002 2l13.568-.013l-3.215 3.23l1.417 1.41l5.644-5.67z"></path></svg></a>
 
 */
 
@@ -59,10 +59,13 @@
   .main-button svg{
     margin-left: 0.6vw;
     display: inline-block;
-    width: 1.6vw;
-    height: 1.6vw;
+    width: 2vw;
+    height: 2vw;
     aspect-ratio: 1/1;
     transition: 0.4s transform;
+  }
+  .main-button svg path{
+    fill: var(--secondary-text-color);
   }
   
   .main-button:hover svg{

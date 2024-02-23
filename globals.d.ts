@@ -26,3 +26,15 @@ interface multiPartFormSection{
     title: string,
     subtitle?: string
 }
+
+interface servicesModuleType{
+    services: serviceType[]
+}
+
+interface serviceType{
+    icon: ReactNode,
+    title: string,
+    description: string,
+    backgroundImageUrl: string,
+    url?: string
+}
