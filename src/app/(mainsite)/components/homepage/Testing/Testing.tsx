@@ -1,9 +1,9 @@
-import FeaturedService from "../../../../../../fordev/Sections/FeaturedService/FeaturedService"
+import HorizontalFreeQuoteForm from "../../../../../../fordev/Forms/HorizontalFreeQuoteForm/HorizontalFreeQuoteForm"
 export default function Testing() {
 
   return (
     <>
-        <FeaturedService imgSrc="/img/placeholder-vertical.png" />
+        <HorizontalFreeQuoteForm />
 
     </>
   )
