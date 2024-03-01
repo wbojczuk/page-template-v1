@@ -1,15 +1,61 @@
 .mainNav{
-    position: relative;
+    position: fixed;
     top:0;
     left:0;
-    width: 92%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 0.4vw 4%;
+    width: 100%;
     background-color: white;
     z-index: 998;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+    transition: 0.5s transform;
+}
+
+.topBar{
+    background-color: var(--primary-color-2);
+    padding: 0.5vw 10%;
+    color: var(--secondary-text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topBarText{
+    font-weight: 500;
+}
+
+.topBarLinks{
+    display: flex;
+    align-items: center;
+}
+
+.topBarLinks a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    padding: 0 1vw;
+}
+
+.topBarLinks a:not(.topBarLinks a:nth-child(1)){
+    border-left: 1px solid var(--secondary-text-color);
+}
+
+.topBarLinks svg{
+    width: 1.8vw;
+    height: 1.8vw;
+    margin-right: 0.4vw;
+}
+
+.topBarLinks svg path{
+    fill: var(--secondary-text-color);
+}
+
+.navContent{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 80%;
+    padding: 0.4vw 10%;
 }
 
 .logo{
@@ -26,7 +72,7 @@
     font-size: 2rem;
 }
 .logoImg{
-    width: 4vw;
+    width: 10vw;
     height: 4vw;
     object-fit: contain;
     object-position: center;
@@ -35,6 +81,7 @@
 
 .links{
     list-style-type: none;
+    margin-bottom: 0.5vw;
 }
 
 .links a, .dropdownLink{
@@ -72,13 +119,19 @@
     transition: color 0.3s;
     cursor: pointer;
     padding-bottom: 1.4vw;
+    position: relative;
 }
 
-.navLink.active{
-    color: var(--primary-color);
-}
-.navLink.active:hover{
-    color: var(--primary-color);
+.navLink.active::after{
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    left: 0;
+    bottom: 1vw;
+    background-color: var(--primary-color);
 }
 
 .navLink:hover{
@@ -133,11 +186,15 @@
     padding: 0.6vw 1vw;
     border-radius: 999px;
     transition: filter 0.3s;
-    color: white;
+    color: black;
 }
 
 .cta:hover{
     filter: brightness(80%);
+}
+.cta svg{
+    width: 1.5vw;
+    height: 1.5vw;
 }
 
 .cta span{
@@ -145,24 +202,27 @@
 }
 
 /* MEDIUM LAPTOP STYLES */
-@media only screen and (min-width: 1401px) and (max-width: 1900px){
+/* @media only screen and (min-width: 1401px) and (max-width: 1900px){
     .mainNav{
         width: 96%;
         padding: 0.4vw 2%;
     }
-}
+} */
 
 /* SMALL LAPTOP STYLES */
 @media only screen and (min-width: 991px) and (max-width: 1400px){
     .mainNav{
-        width: 96%;
-        padding: 0.6vw 2%;
+        /* width: 80%; */
+        
+    }
+    .navContent{
+        padding: 0.6vw 10%;
     }
     .logo span{
         padding-left: 0.8vw;
     }
     .logoImg{
-        width: 5vw;
+        width: 12vw;
         height: 5vw;
     }
     .content{
@@ -193,14 +253,38 @@
 
 /* TABLET + MOBILE STYLES */
 @media only screen and (max-width: 990px){
+    .topBarText{
+        display: none;
+    }
     .content{
         padding: 0 !important;
     }
     .mainNav{
         position: fixed;
+        width: 100%;
+    }
+
+    .topBar{
+        justify-content: center;
+        padding: 1.5vw 0;
+    }
+
+    .topBar svg{
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+    .topBarLinks a{
+        font-size: 1.5rem;
+        padding: 0 2vw;
+    }
+
+    .navContent{
+        align-items: center;
         width: 90%;
         padding: 1vw 5%;
-        align-items: center;
+    }
+    .navLink.active::after{
+        width: 20%;
     }
     
     .logo span{
@@ -208,8 +292,8 @@
         font-size: 2.2rem;
     }
     .logoImg{
-        width: 6vw;
-        height: 6vw;
+        width: 30vw;
+        height: 8vw;
     }
     
     .links a{
@@ -236,7 +320,7 @@
     }
     .links{
         position: absolute;
-        width: 40%;
+        /* width: 40%; */
         right: 0;
         top: 100%;
         padding: 2vw;
@@ -322,7 +406,6 @@
         padding: 1vw 2vw;
         border-radius: 999px;
         transition: filter 0.3s;
-        color: white;
         display: inline-flex;
         margin: 1.5vw 0;
     }
@@ -343,7 +426,7 @@
         font-size: 2.2rem;
     }
     .logoImg{
-        width: 10vw;
+        width: 30vw;
         height: 10vw;
     }
     .noIcon{
@@ -352,6 +435,28 @@
     .links svg{
         width: 5vw;
         height: 5vw;
+    }
+
+    .topBar{
+        padding: 3vw 0;
+    }
+
+    .topBar svg{
+        width: 5vw;
+        height: 5vw;
+        margin-right: 1vw;
+    }
+    .topBarLinks a{
+        font-size: 1.5rem;
+        padding: 0 2vw;
+    }
+
+    .topBarLinks a:nth-child(1){
+        display: none;
+    }
+    .topBarLinks a:nth-child(2){
+        border: none !important;
+        padding-left: 0;
     }
     
     .links span{
@@ -399,7 +504,6 @@
         padding: 2vw 4vw;
         border-radius: 999px;
         transition: filter 0.3s;
-        color: white;
         display: inline-flex;
         margin: 2.5vw 0 0 0;
     }

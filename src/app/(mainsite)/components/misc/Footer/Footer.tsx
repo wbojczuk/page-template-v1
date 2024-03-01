@@ -47,17 +47,17 @@ export default function Footer() {
 
                 <aside className={`${styles.contactItem} ${styles.listItem}`}>
                 <InlineIcon icon={"mdi:phone"} width="50px" height="50px" />
-                  <a href="tel:0000000000" target="_blank">(000) 000-0000</a>
+                  <a href={"tel:" + process.env.NEXT_PUBLIC_PHONE_NUM} target="_blank">{process.env.NEXT_PUBLIC_PHONE_NUM_FORMATTED}</a>
                 </aside>
                 
                 <aside className={`${styles.contactItem} ${styles.listItem}`}>
                 <InlineIcon icon={"mdi:email"} width="50px" height="50px" />
-                  <a href="mailto:example@gmail.com" target="_blank">example@gmail.com</a>
+                  <a href={"mailto:" + process.env.NEXT_PUBLIC_EMAIL_ADDRESS} target="_blank">{process.env.NEXT_PUBLIC_EMAIL_ADDRESS}</a>
                 </aside>
                 
                 <aside className={`${styles.contactItem} ${styles.listItem}`}>
                 <InlineIcon icon={"mdi:map-marker"} width="50px" height="50px" />
-                  <a href="https://google.com" target="_blank">Rome, Georgia</a>
+                  <a href="https://google.com" target="_blank">{process.env.NEXT_PUBLIC_BUSINESS_CITY_STATE}</a>
                 </aside>
 
               </ul>
@@ -66,7 +66,7 @@ export default function Footer() {
 
       </div>
 
-      <div className={styles.copyright}>© Copyright 2023 to Present - <a href="https://www.romedigital.co" target="_blank">Rome Digital</a></div>
+      <div className={styles.copyright}>© Copyright 2024 to Present - <a href="https://www.romedigital.co" target="_blank">Rome Digital</a></div>
         
        
     </footer>
