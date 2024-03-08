@@ -1,9 +1,8 @@
 "use client"
-import { InlineIcon } from "@iconify/react"
 import { useRef, useState } from "react"
 import styles from "./horizontalfreequoteform.module.css"
 import MessageStatus from "../MessageStatus/MessageStatus"
-import handleFormSubmit from "../FreeEstimateForm/handleFormSubmit"
+import sendEmail from "../../controllers/sendEmail"
 
 export default function HorizontalFreeQuoteForm() {
 
@@ -15,7 +14,10 @@ export default function HorizontalFreeQuoteForm() {
         <MessageStatus status={status} setStatus={setStatus} />
         <div className={styles.formWrapper}>
             <h2 className={styles.title}>GET YOUR FREE QUOTE!</h2>
-            <form ref={formRef} className={styles.form} onSubmit={(evt: any)=>handleFormSubmit(evt, setStatus, formRef)}>
+            <form ref={formRef} className={styles.form} onSubmit={(evt: any)=>{sendEmail(evt, setStatus,{
+                receiverEmail: process.env.NEXT_PUBLIC_DELIVERY_EMAIL!,
+                data: Object.fromEntries(new FormData(formRef.current))
+            }, formRef.current)}}>
                 <div className={styles.inputWrapper}>
                     <input required type="text" name="name" id="nameInput" placeholder="Name"/>
 
@@ -36,7 +38,7 @@ export default function HorizontalFreeQuoteForm() {
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#c8c8c8" d="M12 3c5.5 0 10 3.58 10 8s-4.5 8-10 8c-1.24 0-2.43-.18-3.53-.5C5.55 21 2 21 2 21c2.33-2.33 2.7-3.9 2.75-4.5C3.05 15.07 2 13.13 2 11c0-4.42 4.5-8 10-8"></path></svg>
                 </div>
-                <a onClick={()=>{formRef.current.requestSubmit()}} className="main-button">Submit  <InlineIcon icon="gg:arrow-right"/></a>
+                <a onClick={()=>{formRef.current.requestSubmit()}} className="main-link">Submit</a>
             </form>
         </div>
     </>

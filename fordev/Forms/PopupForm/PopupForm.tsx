@@ -3,9 +3,9 @@
 import "./popupform.css"
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
-import handleFormSubmit from "../handleFormSubmit"
+import sendEmail from "../../controllers/sendEmail"
 import Image from "next/image"
-import MessageStatus from "../../MessageStatus/MessageStatus"
+import MessageStatus from "../MessageStatus/MessageStatus"
 
 export default function PopUpForm() {
 
@@ -85,9 +85,10 @@ export default function PopUpForm() {
     <>
     <MessageStatus status={status} setStatus={setStatus} />
     <div id="popupFormWrapper" ref={wrapperRef} >
-        <form ref={formRef} id="popupForm" onSubmit={(evt)=>{handleFormSubmit(evt, setStatus, formRef); closeForm()}}>
-        <input type="hidden" name="_captcha" value="false"/>
-        <input type="hidden" name="_subject" value="New message from website"/>
+        <form ref={formRef} id="popupForm" onSubmit={(evt: any)=>{sendEmail(evt, setStatus,{
+                receiverEmail: process.env.NEXT_PUBLIC_DELIVERY_EMAIL!,
+                data: Object.fromEntries(new FormData(formRef.current))
+            }, formRef.current); closeForm()}}>
             
             {/* START FIELDS */}
 
@@ -111,7 +112,7 @@ export default function PopUpForm() {
             </div>
             
             <div className="center">
-                <a onClick={(evt)=>{evt.preventDefault(); formRef.current.requestSubmit();}} className="main-button" id="estimateFormSubmit" type="submit">Let's Go! <img src="./icons/arrow-right.svg" aria-hidden /></a>
+                <a onClick={(evt)=>{evt.preventDefault(); formRef.current.requestSubmit();}} className="main-link" id="estimateFormSubmit" type="submit">Let's Go!</a>
             </div>
 
 

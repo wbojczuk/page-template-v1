@@ -1,13 +1,11 @@
 "use client"
-import { InlineIcon } from "@iconify/react"
 import styles from "./featuredservice.module.css"
-import Image from "next/image"
 
-export default function FeaturedService(props: {imgSrc: string}) {
+export default function FeaturedService() {
   return (
     <section className={styles.section}>
         <div className={styles.imgWrapper}>
-            <Image className={styles.img} src={props.imgSrc} width={360} height={600} alt="Featured Service Image" />
+            <img className={styles.img} src="/img/placeholder-vertical.png" width={360} height={600} alt="Featured Service Image" />
         </div>
         
 
@@ -19,7 +17,7 @@ export default function FeaturedService(props: {imgSrc: string}) {
             <br /><br />
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, nihil. Sit, animi similique voluptatibus corporis saepe aliquam accusantium autem sunt quasi ut pariatur, eum dolorum soluta ad obcaecati, asperiores et.
             </p>
-            <a className="main-button">GET AN APPOINTMENT  <InlineIcon icon="gg:arrow-right"/></a>
+            <a className="main-link">GET AN APPOINTMENT</a>
         </div>
     </section>
   )

@@ -1,7 +1,7 @@
 "use client"
 
 import styles from "./multipartform.module.css"
-import handleFormSubmit from "../FreeEstimateForm/handleFormSubmit"
+import sendEmail from "../../controllers/sendEmail"
 import DisplaySteps from "./styling/DisplaySteps/DisplaySteps"
 import MessageStatus from "../MessageStatus/MessageStatus"
 import { useRef, useState, ReactNode, useEffect } from "react"
@@ -52,7 +52,6 @@ export default function MultiPartForm(props: multiPartFormProps) {
 
     const displaySteps = (props.displaySteps != null) ? props.displaySteps : true
 
-    const onSubmit = ()=>{} //(evt: any)=>handleFormSubmit(evt, setStatus, formRef)
 
     let displayStepsSize: any = 0
 
@@ -79,12 +78,6 @@ export default function MultiPartForm(props: multiPartFormProps) {
             if(isLastSection){
                 formRef.current.requestSubmit()
             }else{
-                // const oldSection = currentSection
-                // const newSection = oldSection + 1
-                // sectionRefs.current[oldSection].classList.remove(styles.primary)
-                // sectionRefs.current[oldSection].classList.add(styles.hidden)
-                // sectionRefs.current[newSection].classList.remove(styles.hidden)
-                // sectionRefs.current[newSection].classList.add(styles.primary)
                 swiperRef.current.swiper.slideNext()
 
                 setCurrentSection((oldVal)=>{
@@ -100,13 +93,6 @@ export default function MultiPartForm(props: multiPartFormProps) {
         saveFormData()
 
        if(currentSection > 0){
-            // const oldSection = currentSection
-            // const newSection = oldSection - 1
-            // sectionRefs.current[oldSection].classList.remove(styles.primary)
-            // sectionRefs.current[oldSection].classList.add(styles.hidden)
-            // sectionRefs.current[newSection].classList.remove(styles.hidden)
-            // sectionRefs.current[newSection].classList.add(styles.primary)
-
             swiperRef.current.swiper.slidePrev()
 
             setCurrentSection((oldVal)=>{
@@ -215,9 +201,10 @@ export default function MultiPartForm(props: multiPartFormProps) {
     <>
         <MessageStatus status={status} setStatus={setStatus}/>
 
-        <form className={styles.form} ref={formRef} id="multiPartForm" onSubmit={onSubmit}>
-            <input type="hidden" name="_subject" value="New message from website"/>
-            <input type="hidden" name="_captcha" value="false"/>
+        <form className={styles.form} ref={formRef} id="multiPartForm" onSubmit={(evt: any)=>{sendEmail(evt, setStatus,{
+                receiverEmail: process.env.NEXT_PUBLIC_DELIVERY_EMAIL!,
+                data: Object.fromEntries(new FormData(formRef.current))
+            }, formRef.current)}}>
 
             {/* ----- Top Header */}
             <div className={styles.header}>
