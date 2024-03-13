@@ -71,14 +71,18 @@ export default function Navbar() {
     const isOnTouch = window.matchMedia("(max-width: 990px)").matches
     setIsOnTouch(isOnTouch)
     setIsOnMobile(window.matchMedia("(max-width: 649px)").matches)
+    
+    if(window.scrollY > 10){
+      navbarAnimIn()
+    }else{
+      navbarAnimOut()
+    }
 
     window.addEventListener("scroll", ()=>{
       if(window.scrollY > 10){
-        const topbarStyles = window.getComputedStyle(topBarRef.current)
-        const topAmt = parseFloat(topbarStyles.height) + parseFloat(topbarStyles.paddingTop) + parseFloat(topbarStyles.paddingBottom)
-        navRef.current.style.transform = `translateY(-${topAmt}px)`
+        navbarAnimIn()
       }else{
-        navRef.current.style.transform = "translateY(0)"
+        navbarAnimOut()
       }
     })
 
@@ -91,6 +95,16 @@ export default function Navbar() {
       })
     }
   }, [])
+
+  function navbarAnimIn(){
+    const topbarStyles = window.getComputedStyle(topBarRef.current)
+        const topAmt = parseFloat(topbarStyles.height) + parseFloat(topbarStyles.paddingTop) + parseFloat(topbarStyles.paddingBottom)
+        navRef.current.style.transform = `translateY(-${topAmt}px)`
+  }
+
+  function navbarAnimOut(){
+    navRef.current.style.transform = "translateY(0)"
+  }
 
 
   function toggleMenu(){

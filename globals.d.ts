@@ -1,5 +1,3 @@
-import { ReactNode } from "react"
-
 interface faqType{
     question: string,
     answer: string
@@ -22,7 +20,7 @@ interface reviewType{
 
 
 interface multiPartFormSection{
-    elements: ReactNode,
+    elements: any,
     title: string,
     subtitle?: string
 }
@@ -32,7 +30,7 @@ interface servicesModuleType{
 }
 
 interface serviceType{
-    icon: ReactNode,
+    icon: any,
     title: string,
     description: string,
     backgroundImageUrl: string,
