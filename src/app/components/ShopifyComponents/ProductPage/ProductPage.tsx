@@ -24,7 +24,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
   const imagesRef: any = useRef()
   const [optionTypes, setOptionTypes]: [optionTypes: string[], setOptionTypes: any] = useState([]!)
 
-  const { getProductByHandle } = useContext(ShopContext);
+  const { getProductByHandle, checkQty } = useContext(ShopContext);
 
   const [currentVariant, setCurrentVariant] = useState(0)
   const [currentColor, setCurrentColor] = useState("")
@@ -32,6 +32,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
 
 
   const [qty, setQty] = useState(1)
+  const [qtyAvailable, setQtyAvailable]: [qtyAvailable: qtyAvail, setQtyAvailable: any] = useState(null!)
   const [isLoading, setIsLoading] = useState(true)
   
   const [variants, setVariants]: [variants: variantType[], setVariants: any] = useState([]!)
@@ -116,9 +117,12 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
 
     // Init
     useEffect(()=>{
-    window.scrollTo(0,0)
+      window.scrollTo(0,0)
       getProduct()
       async function getProduct(){
+        const qtyAvail = await checkQty(productHandle)
+        console.log(qtyAvail)
+        setQtyAvailable(qtyAvail)
         const productData: productType = await getProductByHandle(productHandle)
         setProduct(productData)
         setImageData(productData.images)
@@ -194,7 +198,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
       // RUN AS BOTH color and size is there
       if(optionTypes.includes("color") && optionTypes.includes("size")){
       
-      setCurrentSize("unselected")
+      
       if(sizeOptions.length > 1){
         
 
@@ -237,8 +241,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
           }
         })
         sizeElems.current.forEach((elem: HTMLInputElement)=>{
-          //@ts-ignore
-          elem.checked = false
+          
           //@ts-ignore
           if(compatibleSizes.includes(elem.value) && sizeAndColorAvailibility[elem.value]){
             //@ts-ignore
@@ -280,9 +283,23 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
       }
     }, [currentColor, product, colorElems.current])
 
+    useEffect(()=>{
+      if(optionTypes.includes("color") && optionTypes.includes("size")){
+
+        sizeElems.current.forEach((elem: HTMLInputElement)=>{
+          //@ts-ignore
+          elem.checked = false
+        })
+      
+        setCurrentSize("unselected")
+      }
+    }, [currentColor])
+
 
     // Size / Last Selector Hook
     useEffect(()=>{
+      console.log(currentSize)
+      
        // RUN AS BOTH color and size is there
        if(optionTypes.includes("color") && optionTypes.includes("size")){
       if(currentSize != "" && currentSize != "unselected"){
@@ -414,7 +431,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
           evt.currentTarget.parentNode.querySelector('input[type=number]').stepUp(); qtyHandler()}}  className={styles.plus}></button>
       </div>
 
-      <AddToCartButton variantID={variants[currentVariant].id} available={variants[currentVariant].available} currentSize={currentSize} currentColor={currentColor} qty={qty} />
+      <AddToCartButton qtyAvail={qtyAvailable} variantID={variants[currentVariant].id} available={variants[currentVariant].available} currentSize={currentSize} currentColor={currentColor} qty={qty} />
 
            
       </div>
