@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { client } from "./shopifyStore";
+import { client, uoclient } from "./shopifyStore";
 const ShopContext = React.createContext();
 
 class ShopProvider extends Component {
@@ -21,7 +21,7 @@ class ShopProvider extends Component {
   }
 
   getProducts = async () => {
-    const products = client.product.fetchAll()
+    const products = client.product.fetchAll(25)
     return products
   }
 
@@ -34,6 +34,7 @@ class ShopProvider extends Component {
 
   setProducts = async () => {
     const products = await this.getProducts()
+   
     this.setState({ products: products });
   }
 
@@ -49,6 +50,30 @@ class ShopProvider extends Component {
 
   getCheckoutUrl = ()=>{
     return this.state.checkout.webUrl
+  }
+
+  checkQty = async(handle)=>{
+      const qtyQuery = uoclient.graphQLClient.query((root) => {
+        root.add(
+          "productByHandle",
+          { args: { handle: `${handle}` } },
+          (product) => {
+            product.addConnection(
+              "variants",
+              { args: { first: 99 } },
+              (variant) => {
+                variant.add("id");
+                variant.add("availableForSale");
+                variant.add("quantityAvailable");
+              }
+            );
+          }
+        );
+      });
+      return uoclient.graphQLClient
+        .send(qtyQuery)
+        .then((res) => JSON.parse(JSON.stringify(res.model.productByHandle)))
+        .catch(() => null);
   }
 
   createCheckout = async () => {
@@ -111,6 +136,7 @@ class ShopProvider extends Component {
       <ShopContext.Provider
         value={{
           ...this.state,
+          checkQty: this.checkQty,
           removeLineItem: this.removeLineItem,
           updateItemQuantity: this.updateItemQuantity,
           closeCart: this.closeCart,
