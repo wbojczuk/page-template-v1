@@ -5,10 +5,10 @@ import styles from "./addtocartbutton.module.css"
 import Loading from "../../Loading/Loading"
 
 
-export default function AddToCartButton(props:{variantID: string, qty: number, available: boolean, currentSize: string, currentColor: string}) {
-
+export default function AddToCartButton(props:{qtyAvail: qtyAvail, variantID: string, qty: number, available: boolean, currentSize: string, currentColor: string}) {
+  
   const buttonRef: any = useRef()
-    const {addItemToCheckout, openCart} = useContext(ShopContext)
+    const {addItemToCheckout, openCart, checkout}: {addItemToCheckout: any, openCart: any, checkout: cartType}  = useContext(ShopContext)
     const [addingState, setAddingState] = useState(false)
     const adding: any = useRef()
     adding.current = false;
@@ -19,10 +19,37 @@ export default function AddToCartButton(props:{variantID: string, qty: number, a
           if(!adding.current){
             setAddingState(true)
             adding.current = true;
+            let isAvail = true
+            let qtyAvail = 0
+
+            props.qtyAvail.variants.forEach((variant,i)=>{
+              if((variant.id == props.variantID) && !(variant.availableForSale && variant.quantityAvailable == 0) && (variant.quantityAvailable < props.qty)){
+                console.log("HEY")
+                qtyAvail = variant.quantityAvailable
+                isAvail = false
+              }
+              checkout.lineItems.forEach((item, i)=>{
+                if((item.variant.id == variant.id) && ((item.quantity + props.qty) > qtyAvail) && !(variant.availableForSale && variant.quantityAvailable == 0)){
+                  
+                  isAvail = false
+                }
+              })
+            })
+
+            
+
+           
+
+            if(!isAvail){
+              alert("That Amount Is Not Available.")
+              adding.current = false;
+              setAddingState(false)
+            }else{
             await addItemToCheckout(props.variantID, props.qty)
             adding.current = false;
             setAddingState(false)
             openCart()
+            }
           }
         }else{
           alert("Select a size")
