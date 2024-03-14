@@ -21,6 +21,16 @@ interface optionType{
     values: optionValueType[]
 }
 
+interface qtyAvail{
+    variants: qtyVariant[]
+}
+
+interface qtyVariant{
+    id: string,
+    quantityAvailable: number,
+    availableForSale: boolean
+}
+
 interface optionValueType {value: string}
 
 interface variantType{
