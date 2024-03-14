@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useState, useContext } from "react"
+import { useRef, useState, useContext, useEffect } from "react"
 import styles from "./cartitem.module.css"
 import Link from "next/link"
 import { ShopContext } from "@/app/shopify/shopContext"
@@ -12,9 +12,11 @@ interface cartItemProps extends lineItemType{
 }
 export default function CartItem(props: cartItemProps) {
 
-    const {updateItemQuantity, removeLineItem} = useContext(ShopContext)
+    const {updateItemQuantity, removeLineItem, checkQty} = useContext(ShopContext)
 
     const [theQty, setTheQty] = useState(props.quantity)
+
+    const handle = props.title.toLowerCase().replaceAll(" ", "-")
 
     const qtyElem: any = useRef()
 
@@ -24,13 +26,24 @@ export default function CartItem(props: cartItemProps) {
 
     async function qtyHandler(){
         const newQty = parseInt(qtyElem.current.value)
-        setTheQty(newQty)
+        
         if(!props.isUpdating){
             props.setIsUpdating(true)
+            const qtyAvail: qtyAvail = await checkQty(handle)
+            let isAvail = true
+            qtyAvail.variants.forEach((item, i)=>{
+                if((item.id == props.variant.id) && !((qtyAvail.variants[i].quantityAvailable == 0) && qtyAvail.variants[i].availableForSale) && (newQty > qtyAvail.variants[i].quantityAvailable!)){
+                  isAvail = false
+                }
+              })
             if(newQty <= 0){
+                setTheQty(newQty)
                 await removeLineItem(props.id)
-            }else{
+            }else if(isAvail){
+                setTheQty(newQty)
                 await updateItemQuantity(props.id, newQty)
+            }else{
+                alert("There is not enough available to add more.")
             }
             props.setIsUpdating(false)
         }
@@ -40,6 +53,26 @@ export default function CartItem(props: cartItemProps) {
         qtyElem.current.value = 0;
         qtyHandler()
     }
+
+    useEffect(()=>{
+        setData()
+        async function setData(){
+            const avail: qtyAvail = await checkQty(handle)
+            avail.variants.forEach((variant)=>{
+                if((variant.id == props.variant.id)){
+                    if((!variant.availableForSale)){
+                        removeAll()
+                    }else if(variant.availableForSale && (variant.quantityAvailable != 0)){
+                        const amt =  variant.quantityAvailable - props.quantity
+                        if(amt < 0){
+                          qtyElem.current.value = variant.quantityAvailable
+                          qtyHandler()
+                        }
+                    }
+                }
+              })
+        }
+    }, [])
     
   return (
     <>
