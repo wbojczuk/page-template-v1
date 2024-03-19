@@ -2,8 +2,8 @@
 
 import { useRef, useState } from "react"
 import "./freeestimateform.css"
-import sendEmail from "../../controllers/sendEmail"
-import MessageStatus from "../MessageStatus/MessageStatus"
+import sendEmail from "@/app/(mainsite)/controllers/sendEmail"
+import MessageStatus from "./MessageStatus/MessageStatus"
 
 export default function FreeEstimateForm() {
 
@@ -19,23 +19,22 @@ export default function FreeEstimateForm() {
         data: Object.fromEntries(new FormData(formRef.current))
     }, formRef.current)}}>
 
+        <h3 id="estimateFormTitle">Get A Free Estimate!</h3>
+
         {/* START FIELDS */}
             
        
             <div className="input-wrapper">
-                
-            <input className="half-input" required type="text" name="First_Name" id="nameInput1" placeholder={"First name"} />
-            <input className="half-input" required type="text" name="Last_Name" id="nameInput2" placeholder={"Last name"} />
+                <input required type="text" name="First_Name" id="fname_input" placeholder={"First Name"} />
+                <input required type="text" name="Last_Name" id="lname_input" placeholder={"Last Name"} />
             </div>
             
             <div className="input-wrapper">
-               
-                <input className="half-input" required type="tel" name="Phone_Number" id="phoneNumberInput" placeholder={"Phone Number"} />
-                <input className="half-input" required type="email" name="Email" id="emailInput" placeholder={"Email Address"} />
+                <input required type="tel" name="Phone_Number" id="phonenum" placeholder={"Phone Number"} />
             </div>
             <div className="input-wrapper">
                
-            <input required type="text" name="What_Services" id="service input" placeholder={"What Services Are You Interested In?"} />
+            <input required type="email" name="Email" id="email" placeholder={"Email"} />
             </div>
 
             <div className="input-wrapper">
@@ -43,7 +42,7 @@ export default function FreeEstimateForm() {
             </div>
             
             <div className="center">
-                <a onClick={(evt)=>{evt.preventDefault(); formRef.current.requestSubmit();}} className="main-link" id="estimateFormSubmit" type="submit">Submit</a>
+                <a onClick={(evt)=>{evt.preventDefault(); formRef.current.requestSubmit();}} className={`main-link`} id="estimateFormSubmit" type="submit">Submit</a>
             </div>
 
             {/* END FIELDS */}

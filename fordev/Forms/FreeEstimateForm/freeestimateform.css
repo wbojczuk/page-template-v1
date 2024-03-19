@@ -2,11 +2,12 @@
     position: relative;
     left: -0.5vw;
     display: inline-block;
-    /* background-color: var(--primary-color); */
+    background-color: rgba(255,255,255,0.85);
     /* padding: 1.5vw; */
     padding-top: 0;
-    color: var(--main-color);
-    width: 25vw;
+    padding-bottom: 2vw;
+    color: var(--secondary-text-color);
+    width: 28vw;
     min-height: 33rem;
     /* box-shadow: 0px 4px 8px rgba(0,0,0,0.5); */
 }
@@ -14,10 +15,15 @@
 #estimateFormTitle{
     font-size: 2.5rem;
     font-family: var(--primary-font);
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
     text-align: center;
     line-height: 120%;
-    font-weight: 800;
-    padding: 1vw 0 4vw 0;
+    font-weight: 600;
+    padding: 1vw 0 2vw 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
     position: relative;
 
 }
@@ -37,17 +43,20 @@
     width: 11%;
 }
 #estimateForm input:not(input[type="submit"]):focus, #estimateForm textarea:focus{
-    outline: 4px solid var(--secondary-color);
-    /* border: 3px solid var(--secondary-color); */
+    outline: none;
+    border-color: var(--primary-color);
 }
 #estimateForm input, #estimateForm textarea{
     display: inline-block;
     font-size: 1.2em;
     font-family: var(--main-font);
     font-weight: 400;
-    width: 98%;
-    border: 3px solid var(--main-text-color);
+    width: 80%;
+    margin: 0 9%;
+    border: none;
+    border-bottom: 2px solid var(--secondary-text-color);
     padding: 1.2vw 0;
+    background-color: transparent;
 }
 
 #estimateForm input.half-input{
@@ -77,9 +86,10 @@
 
 #estimateForm textarea{
     resize: none;
-    width: 98%;
+    width: 80%;
     padding-left: 2%;
     height: 5vw;
+    border: 2px solid black;
 }
 
 .form-disclaimer{
@@ -88,12 +98,10 @@
     font-weight: bold;
 }
 
-
-/* MEDIUM LAPTOP STYLES */
-@media only screen and (min-width: 1401px) and (max-width: 1900px){
-    #estimateForm{
-        width: 28vw;
-    }
+#estimateForm .main-link{
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    width: 50%;
 }
 
 
@@ -128,7 +136,7 @@
     #estimateForm{
         /* padding: 2vw; */
         padding-top: 0;
-        width: 45vw;
+        width: 42vw;
     }
     
     #estimateFormTitle{
@@ -169,13 +177,15 @@
     #estimateForm{
         /* margin-top: 8vw; */
         /* padding: 4vw; */
+        width: 65vw !important;
         padding-top: 0;
         width: 100%;
     }
     
     #estimateFormTitle{
         font-size: 2.4em;
-        padding-bottom: 8vw;
+        padding-bottom: 4vw;
+        padding-top: 4vw;
     }
     .input-wrapper{
         margin: 4vw 0
@@ -193,6 +203,13 @@
     }
     #estimateForm input[type="submit"]{
         font-size: 1.8rem;
+    }
+    #estimateForm textarea{
+        height: 10vw;
+    }
+    #estimateForm .main-link{
+        padding-top: 2vw;
+        padding-bottom: 2vw;
     }
 }
 

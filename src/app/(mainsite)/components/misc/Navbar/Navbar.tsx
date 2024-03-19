@@ -118,13 +118,13 @@ export default function Navbar() {
   function closeMenu(){
     setMenuOpen(false)
     hamburgerRef.current.classList.remove("is-active")
-    contentRef.current.style.transform =  "scaleX(0)"
+    contentRef.current.style.transform =  "scaleY(0)"
   }
 
   function openMenu(){
     setMenuOpen(true)
     hamburgerRef.current.classList.add("is-active")
-    contentRef.current.style.transform =  "scaleX(1)"
+    contentRef.current.style.transform =  "scaleY(1)"
   }
   
   const hamburgerClass = "hamburger--collapse"
