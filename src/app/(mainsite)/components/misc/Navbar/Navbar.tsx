@@ -5,7 +5,6 @@ import styles from "./navbar.module.css"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
-import Image from "next/image"
 import NavMultiOption from "./NavMultiOption"
 import NavOption from "./NavOption"
 
@@ -183,8 +182,8 @@ export default function Navbar() {
 
       <div className={styles.navContent}>
       <Link href="/" className={styles.logo}>
-        <Image src="/img/logo-text.webp" className={styles.logoImg} width={500} height={250} alt="Logo" />
-        
+        <img src="/img/logo.png" className={styles.logoImg} width={500} height={250} alt="Logo" />
+        {/* <span>logo text</span> */}
       </Link>
 
         

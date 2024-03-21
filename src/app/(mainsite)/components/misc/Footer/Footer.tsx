@@ -2,7 +2,6 @@
 
 import styles from "./footer.module.css"
 import Link from "next/link"
-import Image from "next/image"
 import { InlineIcon } from "@iconify/react"
 
 export default function Footer() {
@@ -10,7 +9,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.content}>
 
-        <Image src="/img/logo.png" width={512} height={512} className={styles.logo} alt="Main Logo"/>
+        <img src="/img/logo.png" width={512} height={512} className={styles.logo} alt="Main Logo"/>
 
         <div className={styles.links}>
           <aside>
