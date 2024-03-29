@@ -15,19 +15,20 @@
 }
 
 .cartIcon{
-  top: calc(-2.5vw / 3);
+  position: fixed;
+  bottom: 2vw;
+  right: 2vw;
+  transform: scale(0);
+  transition: 0.3 transform;
+  z-index: 999;
+  color: var(--secondary-text-color);
+  padding: 1vw;
+  background-color: var(--primary-color);
+  border-radius: 50%;
 }
 
-.cartIcon.filled::after{
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top:0;
-    right: 0;
-    width: 0.5vw;
-    aspect-ratio: 1/1;
-    background-color: black;
-    border-radius: 50%;
+.cartIcon.filled{
+   transform: scale(1);
 }
 
 
@@ -39,7 +40,7 @@
     right:0;
     height: 98%;
     width: 24vw;
-    z-index: 990;
+    z-index: 999;
     padding: 2% 1vw 0 1vw;
 }
 
