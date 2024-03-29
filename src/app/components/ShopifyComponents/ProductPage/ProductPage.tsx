@@ -121,7 +121,6 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
       getProduct()
       async function getProduct(){
         const qtyAvail = await checkQty(productHandle)
-        console.log(qtyAvail)
         setQtyAvailable(qtyAvail)
         const productData: productType = await getProductByHandle(productHandle)
         setProduct(productData)
@@ -298,7 +297,6 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
 
     // Size / Last Selector Hook
     useEffect(()=>{
-      console.log(currentSize)
       
        // RUN AS BOTH color and size is there
        if(optionTypes.includes("color") && optionTypes.includes("size")){
