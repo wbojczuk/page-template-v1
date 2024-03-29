@@ -173,6 +173,7 @@
   right: 3vw;
   bottom: 3vw;
   width: 8vw;
+  height: 8vw;
   padding: 2vw;
 }
 
@@ -232,8 +233,9 @@
 .cartIcon{
   right: 4vw;
   bottom: 4vw;
-  width: 14vw;
-  padding: 3vw;
+  width: 12vw;
+  height: 12vw;
+  padding: 4vw;
 }
 
 .cartIcon.filled::after{
