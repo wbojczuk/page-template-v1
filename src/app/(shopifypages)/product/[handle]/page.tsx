@@ -1,5 +1,4 @@
 import ProductPage from "@/app/components/ShopifyComponents/ProductPage/ProductPage"
-import AppWrapper from "@/app/shopify/AppWrapper"
 import { Metadata } from "next"
 import { client } from "@/app/shopify/shopifyStore"
 
@@ -28,6 +27,15 @@ export async function generateMetadata({params}: {params: {handle: string}}): Pr
           images: [ productsData?.images[0].src || '',]
         },
       }
+}
+
+export async function generateStaticParams(){
+  const products = await client.product.fetchAll(25)
+  const handles = products.map((product:productType)=>{
+    const handle = product.handle
+    return {handle}
+  })
+  return handles
 }
 
 export default function ProductPagePage({params}: {params:{handle: string}}) {
