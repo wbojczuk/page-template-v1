@@ -96,13 +96,13 @@ export default function Navbar() {
   }, [])
 
   function navbarAnimIn(){
-    const topbarStyles = window.getComputedStyle(topBarRef.current)
-        const topAmt = parseFloat(topbarStyles.height) + parseFloat(topbarStyles.paddingTop) + parseFloat(topbarStyles.paddingBottom)
-        navRef.current.style.transform = `translateY(-${topAmt}px)`
+    // const topbarStyles = window.getComputedStyle(topBarRef.current)
+    // const topAmt = parseFloat(topbarStyles.height) + parseFloat(topbarStyles.paddingTop) + parseFloat(topbarStyles.paddingBottom)
+    // navRef.current.style.transform = `translateY(-${topAmt}px)`
   }
 
   function navbarAnimOut(){
-    navRef.current.style.transform = "translateY(0)"
+    // navRef.current.style.transform = "translateY(0)"
   }
 
 
