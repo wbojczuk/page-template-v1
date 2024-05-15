@@ -9,7 +9,7 @@ description: `${process.env.NEXT_PUBLIC_WEBSITE_DESC}`,
 type: "website",
 images: [
 {
-url: `${process.env.OPENGRAPH_IMAGE_LINK}`,
+url: `${process.env.NEXT_PUBLIC_OPENGRAPH_IMAGE_LINK}`,
 width: 1280,
 height: 720,
 }
@@ -19,7 +19,7 @@ twitter: {
 card: 'summary_large_image',
 title: `${process.env.NEXT_PUBLIC_WEBSITE_TITLE}`,
 description: `${process.env.NEXT_PUBLIC_WEBSITE_DESC}`,
- images: [`${process.env.OPENGRAPH_IMAGE_LINK}`]
+ images: [`${process.env.NEXT_PUBLIC_OPENGRAPH_IMAGE_LINK}`]
 }
 }
 
