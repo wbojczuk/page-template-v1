@@ -20,8 +20,27 @@ const primaryFont = Roboto({ subsets: ['latin'], weight: ["100", "300", "400", "
 const secondaryFont = Oswald({ subsets: ['latin'], weight: ["300", "500", "700"], display: "swap", variable: "--secondary-font" })
 
 export const metadata: Metadata = {
-  title: 'Template Site Title',
-  description: 'Template Site Desc'
+  title: `${process.env.NEXT_PUBLIC_WEBSITE_TITLE}`,
+  description: `${process.env.NEXT_PUBLIC_WEBSITE_DESC}`,
+
+  openGraph: {
+    title: `${process.env.NEXT_PUBLIC_WEBSITE_TITLE}`,
+    description: `${process.env.NEXT_PUBLIC_WEBSITE_DESC}`,
+    type: "website",
+    images: [
+      {
+        url: `${process.env.OPENGRAPH_IMAGE_LINK}`,
+        width: 1280,
+        height: 720,
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${process.env.NEXT_PUBLIC_WEBSITE_TITLE}`,
+    description: `${process.env.NEXT_PUBLIC_WEBSITE_DESC}`,
+    images: [`${process.env.OPENGRAPH_IMAGE_LINK}`]
+  },
 }
 
 export default function RootLayout({
