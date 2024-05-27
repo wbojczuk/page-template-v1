@@ -34,7 +34,7 @@ export default function HorizontalFreeQuoteForm() {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#c8c8c8" d="m20 8l-8 5l-8-5V6l8 5l8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"></path></svg>
                 </div>
                 <div className={styles.inputWrapper}>
-                    <textarea name="howCanWeHelp" id="howCanWeHelpInput" placeholder="How can we help?"></textarea>
+                    <textarea name="How_Can_We_Help" id="howCanWeHelpInput" placeholder="How can we help?"></textarea>
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#c8c8c8" d="M12 3c5.5 0 10 3.58 10 8s-4.5 8-10 8c-1.24 0-2.43-.18-3.53-.5C5.55 21 2 21 2 21c2.33-2.33 2.7-3.9 2.75-4.5C3.05 15.07 2 13.13 2 11c0-4.42 4.5-8 10-8"></path></svg>
                 </div>
