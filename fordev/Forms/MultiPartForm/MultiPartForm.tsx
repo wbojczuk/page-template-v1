@@ -204,7 +204,7 @@ export default function MultiPartForm(props: multiPartFormProps) {
         <form className={styles.form} ref={formRef} id="multiPartForm" onSubmit={(evt: any)=>{sendEmail(evt, setStatus,{
                 receiverEmail: process.env.NEXT_PUBLIC_DELIVERY_EMAIL!,
                 data: Object.fromEntries(new FormData(formRef.current))
-            }, formRef.current)}}>
+            }, formRef.current); swiperRef.current.swiper.slideTo(0); setCurrentSection(0)}}>
 
             {/* ----- Top Header */}
             <div className={styles.header}>
