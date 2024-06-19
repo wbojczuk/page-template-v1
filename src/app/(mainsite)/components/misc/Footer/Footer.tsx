@@ -24,6 +24,9 @@ export default function Footer() {
                 <li className={styles.listItem}>
                   <Link href="/contact">Contact</Link>
                 </li>
+                <li className={styles.listItem}>
+                  <Link href="/privacy-policy">Privacy Policy</Link>
+                </li>
 
               </ul>
             </aside>
