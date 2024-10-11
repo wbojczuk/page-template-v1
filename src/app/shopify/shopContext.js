@@ -18,6 +18,10 @@ class ShopProvider extends Component {
     } else {
       this.createCheckout()
     }
+    if(!("lineItems" in this.state.checkout)){
+      this.createCheckout();
+      console.log("created new checkout")
+    }
   }
 
   getProducts = async () => {
