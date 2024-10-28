@@ -10,6 +10,8 @@
   --third-color: #F6F6F6;
   --disabled-grey: #c2c2c2;
 
+  --primary-bg: #fff;
+
   /*
   ALREADY IMPORTED
   
@@ -26,6 +28,7 @@
 }
 
 body{
+  background-color: var(--primary-bg);
   font-family: var(--primary-font);
   color: var(--primary-text-color);
 }
