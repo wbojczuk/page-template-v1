@@ -3,6 +3,13 @@ interface faqType{
     answer: string
 }
 
+interface teamMemberType{
+    imgSrc: string,
+    description: string,
+    role: string,
+    name: string
+}
+
 interface linkProps{
     href: string,
     target: string,
