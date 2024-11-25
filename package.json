@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "update": "echo 'Enter Commit Message:' && read msg && git checkout main && git add -A && git commit -m \"$msg\" && git push origin main",
-    "init": "echo 'Enter Commit Message:' && read msg && git checkout -b main && git add -A && git commit -m \"$msg\" && git push origin main"
+    "init": "git checkout -b main && git add -A && git commit -m \"init\" && git push origin main"
   },
   "dependencies": {
     "@types/node": "20.8.5",
