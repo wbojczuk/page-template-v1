@@ -1,0 +1,40 @@
+.pageTitle{
+    padding: calc(var(--section-padding-top)) 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: bold;
+    color: var(--secondary-text-color);
+    
+}
+
+.pageTitle h1{
+    font-size: 5rem;
+    text-align: center;
+    font-family: var(--secondary-font);
+}
+
+.pageTitle h2{
+    width: 20%;
+    text-align: center;
+    font-weight: 500;
+    margin: 2vw 0;
+}
+
+/* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+    .pageTitle h2{
+        width: 35%;
+        margin: 3vw 0;
+    }
+}
+
+ /* MOBILE STYLES */
+ @media only screen and (max-width: 649px){
+    .pageTitle h2{
+        width: 50%;
+        margin: 5vw 0;
+    }
+ }
