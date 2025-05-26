@@ -10,6 +10,8 @@
   --third-color: #F6F6F6;
   --disabled-grey: #c2c2c2;
 
+  --primary-gradient: linear-gradient(to right, var(--primary-color) 0%, #772828 100%);
+
   --primary-bg: #fff;
 
   /*
@@ -41,6 +43,13 @@ body{
 }
 .highlight{
   color: var(--primary-color);
+}
+
+.highlight-gradient{
+  color: transparent;
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .underline{

@@ -1,0 +1,283 @@
+.section{
+    padding: 5vw 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+}
+
+.section h3{
+    z-index: 10;
+    font-size: 4rem;
+    padding-right: 20%;
+    line-height: 120%;
+    font-family: var(--secondary-font);
+}
+
+.faqWrapper{
+    width: 50%;
+}
+
+.faqItem{
+    overflow: hidden;
+    width: 85%;
+    margin: 1.5vw 0;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--primary-text-color);
+    
+}
+
+.mainBg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    top:0;
+    left:0;
+    z-index: 0;
+    opacity: 0.1;
+}
+
+.headingContent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.8rem;
+    transition: 0.3s background-color ease-in-out;
+}
+
+.headingContent:hover{
+    background-color: rgba(0,0,0,0.05);
+}
+
+.headingContent svg{
+    width: 2.8vw;
+    height: 2.8vw;
+}
+
+.faqItemAnswer p{
+    padding: 1vw 2vw;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 180%;
+}
+
+.imgWrapper {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: flex-start;
+   gap: 2vw
+}
+
+.imgStyle1{
+    clip-path: polygon(0 73%, 100% 58%, 100% 100%, 0% 100%);
+    background-color: var(--primary-color);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+}
+
+.imgStyle2{
+    clip-path: polygon(0 80%, 100% 66%, 100% 100%, 0% 100%);
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.6;
+}
+
+.imgText{
+    position: absolute;
+    width: 50%;
+    bottom: 1vw;
+    right: 1vw;
+    padding: 5%;
+    text-align: right;
+    color: var(--secondary-text-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.mobileShow{
+       display: none; 
+    }
+    .mobileHide{
+        
+        display: inline-block;
+    }
+
+.imgContainer{
+    position: relative;
+    width: 90%;
+    height: 28vw;
+}
+
+.imgContainer img{
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+}
+
+/* MEDIUM LAPTOP STYLES */
+@media only screen and (min-width: 991px) and (max-width: 1900px){
+    
+    .headingContent{
+        padding: 0.1vw 2vw;
+        font-size: 1.4rem;
+    }
+    
+    .headingContent svg{
+        width: 3.2vw;
+        height: 3.2vw;
+    }
+
+    .imgContainer{
+    position: relative;
+    width: 90%;
+    height: 35vw;
+}
+}
+
+/* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+    .mobileShow{
+        display: inline-block;
+    }
+    .mobileHide{
+        display: none;
+    }
+    .faqWrapper{
+    width: 70%;
+}
+    .imgText{
+    position: absolute;
+    width: 50%;
+    bottom: 0;
+    right: 1vw;
+    padding: 5%;
+    text-align: right;
+    color: var(--secondary-text-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+    .imgWrapper {
+   gap: 2vw
+}
+.imgContainer{
+    width: 80%;
+    height: 40vw;
+}
+
+    .section{
+        padding: 6vw 0;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 4vw;
+    }
+    
+    
+    .faqItem{
+        width: 100%;
+        margin: 4vw 1vw;
+        
+    }
+    
+    .headingContent{
+        padding: 0.5vw 0;
+    }
+    
+    .headingContent svg{
+        width: 4vw;
+        height: 4vw;
+    }
+    
+    .faqItemAnswer p{
+        padding: 1vw 2vw;
+        font-size: 1.3rem;
+        line-height: 150%;
+    }
+}
+ 
+/* MOBILE STYLES */
+@media only screen and (max-width: 649px){
+
+    .mobileShow{
+        display: inline-block;
+    }
+    .mobileHide{
+        display: none;
+    }
+    
+    .section h1{
+        padding-bottom: 4vw;
+        font-size: 4rem;
+        text-align: center;
+    }
+    
+      .faqWrapper{
+    width: 85%;
+}
+    .imgText{
+    position: absolute;
+    width: 50%;
+    bottom: 0;
+    right: 1vw;
+    padding: 5%;
+    text-align: right;
+    color: var(--secondary-text-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.imgWrapper {
+   gap: 4vw;
+   padding:  5%;
+}
+.imgContainer{
+    margin: 0;
+    width: 100%;
+    height: 70vw;
+}
+
+    .section{
+        padding: 6vw 0;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 6vw;
+    }
+    
+    
+    .faqItem{
+        width: 100%;
+        margin: 6vw 1vw;
+        
+    }
+    
+    .headingContent{
+        padding: 1vw 0;
+    }
+    
+    .headingContent svg{
+       width: 8vw;
+        height: 8vw;
+    }
+    
+    .faqItemAnswer p{
+        padding: 1vw 2vw;
+        font-size: 1.4rem;
+        line-height: 150%;
+    }
+}
