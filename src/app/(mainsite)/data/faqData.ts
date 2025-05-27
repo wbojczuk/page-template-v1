@@ -1,7 +1,24 @@
 const faqData: faqType[] = [
     {
-        question: "",
-        answer: ``
+        question: "What if I got Beat",
+        answer: `What if I got BeatWhat if I got BeatWhat if I got BeatWhat if I got Beat`
+    },
+    {
+        question: "What if I got Beat",
+        answer: `What if I got BeatWhat if I got BeatWhat if I got BeatWhat if I got Beat`
+    },{
+        question: "What if I got Beat",
+        answer: `What if I got BeatWhat if I got BeatWhat if I got BeatWhat if I got Beat`
+    },
+    {
+        question: "What if I got Beat",
+        answer: `What if I got BeatWhat if I got BeatWhat if I got BeatWhat if I got Beat`
+    },{
+        question: "What if I got Beat",
+        answer: `What if I got BeatWhat if I got BeatWhat if I got BeatWhat if I got Beat`
+    },{
+        question: "What if I got Beat",
+        answer: `What if I got BeatWhat if I got BeatWhat if I got BeatWhat if I got Beat`
     },
     
 ]

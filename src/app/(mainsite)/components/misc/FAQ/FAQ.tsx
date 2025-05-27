@@ -10,7 +10,6 @@ export default function FAQ() {
     })
   return (
     <section className={`${styles.section}`}>
-        
 
        <div className={styles.faqWrapper}>
         
