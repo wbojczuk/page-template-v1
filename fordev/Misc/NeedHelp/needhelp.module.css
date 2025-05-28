@@ -1,0 +1,61 @@
+.needHelp{
+    position: relative;
+    padding: var(--section-padding-top) 15%;
+    background: var(--primary-gradient-r);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text{
+    font-family: var(--secondary-font);
+    font-size: 3.8rem;
+    font-weight: 600;
+    width: 40%;
+    color: white;
+    line-height: 120%;
+}
+
+.button{
+    color: var(--primary-color);
+    background: white;
+}
+
+
+
+/* SMALL LAPTOP STYLES */
+@media only screen and (min-width: 991px) and (max-width: 1400px){
+.text{
+    width: 50%;
+}
+}
+
+/* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+.needHelp{
+   justify-content: center;
+   flex-direction: column;
+   gap: 6vw;
+}
+
+.text{
+    width: 70%;
+    text-align: center;
+    font-size: 3rem;
+}
+}
+
+ /* MOBILE STYLES */
+@media only screen and (max-width: 649px){
+.needHelp{
+   justify-content: center;
+   flex-direction: column;
+   gap: 10vw;
+}
+
+.text{
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+}
+}
