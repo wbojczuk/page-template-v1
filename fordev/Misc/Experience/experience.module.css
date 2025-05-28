@@ -39,7 +39,7 @@ padding: 4vw 0;
     width: var(--size);
     height: var(--size);
     padding: 1vw;
-    border:1.5px solid #dfa5a5;
+    border:1.5px solid var(--primary-light);
     border-radius: 999px;
 }
 

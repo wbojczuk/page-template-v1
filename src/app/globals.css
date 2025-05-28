@@ -5,13 +5,12 @@
 
 :root{
   --primary-color: #D44B4B;
-  --primary-color-dark: #aa3d3d;
+  
   --secondary-color: #F6F6F6;
   --third-color: #F6F6F6;
   --disabled-grey: #c2c2c2;
 
-  --primary-gradient: linear-gradient(to right, var(--primary-color) 0%, #772828 100%);
-  --primary-gradient-r: linear-gradient(to left, var(--primary-color) 0%, #772828 100%);
+  
 
   --primary-bg: #fff;
 
@@ -21,6 +20,15 @@
   --primary-font: Roboto;
   --secondary-font: Oswald;
   */
+
+  /* GENERATED VARS */
+  --primary-gradient: linear-gradient(to right, var(--primary-color) 0%, color-mix(in srgb, var(--primary-color) 50%, black 50%) 100%);
+  --primary-gradient-r: linear-gradient(to left, var(--primary-color) 0%, color-mix(in srgb, var(--primary-color) 50%, black 50%) 100%);
+
+  --primary-color-dark: color-mix(in srgb, var(--primary-color) 60%, black 40%);
+ --primary-light: color-mix(in srgb, var(--primary-color) 60%, white 40%);
+
+  /* END GENERATED VARS */
 
   --primary-text-color: black;
   --secondary-text-color: white;
