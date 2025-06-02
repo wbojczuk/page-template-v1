@@ -1,8 +1,12 @@
 .main-link{
-  font-family: var(--secondary-font);
+  --bg-fallback: var(--primary-color);
+  --bg: var(--primary-gradient);
+  font-family: var(--primary-font);
+
+
   font-weight: 500;
-  background: var(--primary-color);
-  background: var(--primary-gradient);
+  background: var(--bg-fallback);
+  background: var(--bg);
   font-size: 1.8rem;
   padding: 0.6vw 3.5vw;
   color: var(--secondary-text-color);
@@ -29,6 +33,16 @@
 }
 
 .main-link-light{
+  background-color: white;
+  color: var(--bg-fallback);
+}
+
+.main-link-outline{
+  background: none;
+  box-shadow:inset 0px 0px 0px 2px var(--bg-fallback);
+}
+
+.main-link-outline-light{
   background: none;
   box-shadow:inset 0px 0px 0px 2px white;
 }
