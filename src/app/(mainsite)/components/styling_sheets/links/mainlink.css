@@ -39,10 +39,12 @@
 
 .main-link-outline{
   background: none;
+  color: var(--bg-fallback);
   box-shadow:inset 0px 0px 0px 2px var(--bg-fallback);
 }
 
 .main-link-outline-light{
+  color: white;
   background: none;
   box-shadow:inset 0px 0px 0px 2px white;
 }
