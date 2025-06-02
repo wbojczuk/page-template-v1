@@ -1,6 +1,7 @@
 .main-link{
   font-family: var(--secondary-font);
   font-weight: 500;
+  background: var(--primary-color);
   background: var(--primary-gradient);
   font-size: 1.8rem;
   padding: 0.6vw 3.5vw;
@@ -25,6 +26,11 @@
   background-color: rgba(0,0,0,0.3);
   transform: translateX(-110%);
   transition: 0.4s transform;
+}
+
+.main-link-light{
+  background: none;
+  box-shadow:inset 0px 0px 0px 2px white;
 }
 
 .main-link:hover::after{
